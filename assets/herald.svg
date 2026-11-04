@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>Herald: a speech bubble with lines of text</title>
+  <rect width="256" height="256" fill="#3F7A4E"/>
+  <path d="M72 56 H184 A24 24 0 0 1 208 80 V148 A24 24 0 0 1 184 172 H112 L76 204 V172 H72 A24 24 0 0 1 48 148 V80 A24 24 0 0 1 72 56 Z"
+        fill="none" stroke="#F4F1EA" stroke-width="14" stroke-linejoin="round"/>
+  <g stroke="#F4F1EA" stroke-width="12" stroke-linecap="round">
+    <line x1="80" y1="94" x2="176" y2="94"/>
+    <line x1="80" y1="118" x2="176" y2="118"/>
+    <line x1="80" y1="142" x2="140" y2="142"/>
+  </g>
+</svg>

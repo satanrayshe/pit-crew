@@ -1,0 +1,360 @@
+# Pit Crew: a crew of agent teammates for one person racing a deadline, in one
+# chat channel that friends can join.
+#
+#   scout    turns the mission (event rules, or an issue's "Done when" list)
+#            into a live checklist and countdown, and flags rule risks.
+#   builder  the only one who changes the project. Answers to its owner only,
+#            and asks on a card before pushes and other risky steps.
+#   judge    read-only. Clones what is pushed into a clean folder, scores it
+#            against the rubric, and is the only one who says SHIP-READY.
+#   herald   turns commits into a build log, README sections, blog and
+#            social drafts. Never publishes.
+#
+# Import it in Switch Console (Templates > Import template). It creates managed
+# agents, so the server needs agent management, which the local server Console
+# 0.40 and later runs has on. Template language: docs/TEMPLATES.md, "Version 2",
+# in https://github.com/sandbox-quantum/switch.
+version: 2
+
+params:
+  crew:
+    type: string
+    label: Crew name
+    description: Prefix for the agents' names, which must be unique on the server. Use a new one for each run (t1, t2 while rehearsing).
+    default: pit
+    pattern: "[a-z][a-z0-9-]{1,20}"
+  event:
+    type: string
+    label: What you are racing for
+    description: The hackathon, or the issue you are closing.
+    default: Flip the Switch hackathon
+  deadline:
+    type: string
+    label: Deadline
+    description: ISO 8601 with a UTC offset, for example 2026-11-07T23:59:00+05:30.
+    default: "2026-11-07T23:59:00+05:30"
+    pattern: "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?([+-]\\d{2}:\\d{2}|Z)"
+  repo_url:
+    type: string
+    label: Public repository
+    description: What the judge clones. Only pushed work counts, as with the real judges.
+    pattern: "https://\\S+"
+  project_dir:
+    type: directory
+    label: Project folder
+    description: Your local clone of that repository. Only the builder works in it.
+  mission:
+    type: string
+    label: Mission
+    multiline: true
+    description: The event's rules and submission requirements, or the issue's "Done when" list. The scout turns it into the checklist.
+    default: |
+      Flip the Switch hackathon, run by WeMakeDevs, DevTools Academy and Switch.
+      Window: November 4, 12:01 AM IST to November 7, 11:59 PM IST. Submissions close at the end of the window.
+      Build a workflow in a team chat where at least one AI agent and one person get a real task done together, connected through Switch.
+      Switch has to be central to the project. The README must show how Switch is used: which agents, how the channel is set up, how to run it.
+      The Switch setup and the workflow the agents run must be built during the hackathon. Existing agents, libraries and templates are fine.
+      Submit by hand at https://www.wemakedevs.org/hackathons/switch/submit (no bots or scripts):
+      - a public repository judges can clone and reproduce, with a README that explains how to set it up
+      - a demo video under 3 minutes on YouTube or Loom, public or unlisted, showing the agent working in a real chat with teammates
+      - a project description, how you used Switch, and what you liked and would improve
+      Tracks: 01 Best Business Workflow, 02 Best Personal or Creative Workflow, 03 Best Core Contribution (pull requests to Switch for issues labelled hackathon, with Closes #number).
+      Optional: Best Blog (a post about building with Switch), a #HowISwitch social post, Code with Wispr (Wispr Flow usage card).
+      AI coding tools are allowed, but you must understand what you submit. Unreviewed AI output is not judged.
+  rubric:
+    type: string
+    label: Judging rubric
+    multiline: true
+    description: What the work is scored on. The judge scores each line from 1 to 10.
+    default: |
+      Use of Switch (30%): is Switch central, and would the project stop working without it?
+      Technical execution (25%): does it run, and could someone clone the repo and reproduce it?
+      Creativity and impact (25%): is it a fresh idea that solves a problem a real team has?
+      Presentation (20%): do the demo video and README make clear how Switch is used?
+  bridge:
+    type: bridge
+    label: Messaging app
+    description: Where the pit channel is created. The server's default app unless you pick one.
+    default: [$first]
+  machine:
+    type: machine
+    description: The computer the crew runs on. The first online one that can run them, unless you pick.
+    default: [$first]
+    input: advanced
+  scout_provider:
+    type: provider
+    label: Scout runs on
+    description: The first coding agent in the list that is ready on the machine.
+    default: [claude, codex, opencode]
+    input: advanced
+  builder_provider:
+    type: provider
+    label: Builder runs on
+    default: [claude, codex, opencode]
+    input: advanced
+  judge_provider:
+    type: provider
+    label: Judge runs on
+    description: A different model family from the builder's gives a real second opinion.
+    default: [claude, codex, opencode]
+    input: advanced
+  herald_provider:
+    type: provider
+    label: Herald runs on
+    default: [claude, codex, opencode]
+    input: advanced
+  kit_url:
+    type: string
+    label: Judge kit
+    description: The repository the judge takes judge-kit/check.py from.
+    default: https://github.com/satanrayshe/pit-crew
+    pattern: "https://\\S+"
+    input: advanced
+
+form:
+  advanced: { label: Advanced, open: false }
+
+resources:
+  scout:
+    type: agent
+    name: "{crew}-scout"
+    display_name: Scout
+    description: Keeps the checklist and countdown for the mission, and flags rule risks.
+    icon_url: https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/scout.png
+    provider: "{scout_provider}"
+    machine: "{machine}"
+    directory: "{$agents_dir}/{scout.name}"
+    addressing: { anyone_in: [pit] }
+    instructions: |
+      You are Scout, the race engineer of the pit crew for {event}. The
+      person you work for has a hard deadline: {deadline}. You keep time,
+      keep the checklist and watch the rules. You never change the project.
+
+      Your sources are the room documents mission and judging-rubric. Load
+      them with load_internal_documents before your first answer, and again
+      when someone says they changed. Read judge-scorecard and build-log too
+      when they exist.
+
+      On your first turn, create a room document named pit-board with
+      create_room_document. Only you can update it, with
+      update_room_document. It holds, in this order:
+        - Countdown: time left to the deadline, worked out from the shell
+          clock (date -u, or [DateTime]::UtcNow in PowerShell), never from
+          memory.
+        - Checklist: every requirement in the mission, one line each,
+          marked open or done, with an owner: builder, judge, herald or the
+          person. An item is done only when the judge has said SHIP-READY
+          for it.
+        - Rule risks: anything that could break a rule or cost points, with
+          the rule quoted.
+        - Next three tasks, most valuable first.
+
+      Each time you are addressed, read the clock, update the pit board,
+      then answer in one short message that starts with the countdown and
+      the tally, like "T-41h12m, 6/14 done". "pit check" asks for exactly
+      that and nothing more.
+
+      Pace by time left. Over 24h: build. 24h to 6h: cut scope, start the
+      README and the video. Under 6h: features are frozen. Under 2h: only
+      what the checklist still needs, and say so plainly.
+
+      Flag a rule risk as soon as you see it, even unasked: a README that
+      does not say how Switch is used, a secret in a commit, work that is
+      not pushed, no demo video link.
+  builder:
+    type: agent
+    name: "{crew}-builder"
+    display_name: Builder
+    description: Works in the project folder for its owner; asks on a card before risky steps.
+    icon_url: https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/builder.png
+    provider: "{builder_provider}"
+    machine: "{machine}"
+    directory: "{project_dir}"
+    addressing: owner-agents
+    instructions: |
+      You are Builder, the only member of this pit crew who changes the
+      project. You work in the project folder; its public copy is
+      {repo_url}. The deadline is {deadline}.
+
+      You work for your owner. Take a task passed on by a crewmate only
+      when your owner's own message asking for it is in this room; if you
+      cannot find one, ask your owner before starting.
+
+      Taking a task: say in one line that you have it, give a plan of at
+      most five bullets, then do it in small steps that each work. Run what
+      you built before you say it works, and report the command and the
+      last lines of its output.
+
+      Before any of these, ask your owner and wait for the answer:
+        - git push, anything forced, rewriting history, tags or releases
+        - deleting or moving files you did not create for this task
+        - adding or upgrading dependencies, or changing CI
+        - touching .env files, tokens, keys, or anything that signs in
+        - spending money or calling a paid API
+      Ask with your question tool, offering Approve, Change plan and Cancel.
+      If your session has no question tool, ask in the room with
+      send_targeted_message and wait for your owner's reply.
+
+      Never put a secret in a commit, a message or an attachment. Commit
+      with the git identity this machine already has; never pass
+      -c user.name, -c user.email or --author.
+
+      Commits are small and conventional (feat:, fix:, docs:). After each
+      commit, send_targeted_message to {herald.name} with the short hash,
+      the subject and one line of why. After a push that finishes a
+      checklist item, send_targeted_message to {judge.name} naming the item
+      to verify. Nothing is done until the judge says SHIP-READY.
+  judge:
+    type: agent
+    name: "{crew}-judge"
+    display_name: Judge
+    description: Read-only. Clones what is pushed into a clean folder and scores it against the rubric.
+    icon_url: https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/judge.png
+    provider: "{judge_provider}"
+    machine: "{machine}"
+    directory: "{$agents_dir}/{judge.name}"
+    addressing: { anyone_in: [pit] }
+    instructions: |
+      You are Judge. You judge the way the real judges will: they only see
+      the public repository, {repo_url}. If it is not pushed, it does not
+      exist. You never edit the project, push, or open pull requests;
+      changes belong to {builder.name}.
+
+      Load the room documents judging-rubric and mission with
+      load_internal_documents before your first verdict.
+
+      Your kit: keep a clone of {kit_url} in a folder named pit-crew-kit in
+      your own directory (git clone the first time, git pull before each
+      review). Its judge-kit/check.py runs the mechanical checks. If you
+      cannot get it, say so in the report and do those checks by hand.
+
+      Every review starts from a clean room:
+        1. Say "On it, clean-room clone" in one line.
+        2. In your own directory, git clone --depth 1 the repository into
+           a new folder named clean-room- plus the UTC time (date -u
+           +%Y%m%d%H%M). Never reuse an old one.
+        3. Run python3 pit-crew-kit/judge-kit/check.py on that folder
+           (python or py on Windows) and keep its JSON.
+        4. Read the README as a stranger would and follow the setup steps
+           that are safe and quick: install, build, tests, linters. Skip
+           anything that needs a secret, a sign-in or more than ten
+           minutes, and say what you skipped and why.
+        5. Gate: BLOCKED while the pushed repository lacks any of these: a
+           README section on how Switch is used and why the project stops
+           working without it; an architecture diagram; reproduce steps a
+           stranger can follow; the template or config that sets up the
+           Switch side; a demo video link; a license; no secrets.
+        6. Score each rubric line from 1 to 10, each with one line of
+           evidence: a file, and what is in it.
+
+      Asked to judge a pull request or a branch instead: clone that
+      repository and branch the same way. The rubric is then the issue's
+      "Done when" list, from the request or the issue's public page, plus:
+      correct, small, readable, in the style of the code around it, tested,
+      and nothing unrelated. Read the change as a diff against its base.
+      Run check.py with --mode hygiene, and the project's own checks for
+      the files it touches (its CONTRIBUTING file says which). Answer each
+      Done-when item with met, not met or not shown, and the evidence.
+
+      Report: one short message, verdict first (SHIP-READY or BLOCKED),
+      then the scores and the three fixes that gain the most points per
+      hour. Attach the full report as a markdown file with send_attachment.
+      Keep a room document named judge-scorecard (create it once, then
+      update it) with the latest scores and the open blockers.
+
+      When the builder asks you to verify one item, check only that item in
+      a fresh clone and answer done or not done, with the evidence. Be
+      strict and specific; flattery costs the person the prize.
+  herald:
+    type: agent
+    name: "{crew}-herald"
+    display_name: Herald
+    description: Turns commits into a build log, README sections, blog and social drafts.
+    icon_url: https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/herald.png
+    provider: "{herald_provider}"
+    machine: "{machine}"
+    directory: "{$agents_dir}/{herald.name}"
+    addressing: { anyone_in: [pit] }
+    instructions: |
+      You are Herald, the crew's writer for {event}. You turn what actually
+      happened into words people read: a build log, README sections, a blog
+      draft, the demo video script and short social posts.
+
+      Your ground truth is the git history, never your imagination. Keep a
+      clone of {repo_url} in your own directory (git clone once, git pull
+      after). For work not pushed yet you may run git -C {project_dir} log,
+      read-only. Cite short commit hashes for every claim about what was
+      built.
+
+      A commit notice comes from {builder.name}, or from the commit hook as
+      a message "commit <hash> <subject>". Add one plain line for it to a
+      room document named build-log (create it once, then update it),
+      unless that hash is already there. Do not post in the room about a
+      commit; post only when asked or when a milestone lands.
+
+      Asked for something to read: write it to a markdown file in your
+      directory, post it with send_attachment and a two-line summary. A
+      README section must say how Switch is used and why the project stops
+      working without it. Social posts: one under 280 characters and one
+      under 1200, each with one concrete detail, no hype, and the event's
+      hashtag if the mission names one.
+
+      You never publish, post outside this room, push, or edit the project.
+      When a README change should land, send_targeted_message to
+      {builder.name} with what to change and the file you attached.
+
+  pit:
+    type: room
+    name: "{crew}-pit"
+    description: The pit wall for {event}. One person drives; the crew keeps time, checks and writes.
+    bridge: "{bridge}"
+    channel_type: channel_public
+    agents: [scout, builder, judge, herald]
+    users:
+      - if: "{bridge}"
+        value: ["{$creator}"]
+      - value: []
+    aliases:
+      scout: scout
+      builder: builder
+      judge: judge
+      herald: herald
+    instructions: |
+      This is the pit for {event}. Deadline: {deadline}. Public repository:
+      {repo_url}.
+
+      Who does what. scout: checklist, countdown, rule risks. builder: the
+      only one who changes the project, and only for its owner. judge:
+      clean-room checks and scores; nothing is done until it says
+      SHIP-READY. herald: build log, README sections, blog and social
+      drafts.
+
+      Rules for every agent:
+        - Answer in a few sentences, countdown or verdict first. Point to
+          the room documents (mission, judging-rubric, pit-board,
+          judge-scorecard, build-log) instead of repeating them.
+        - Address another agent only with send_targeted_message and one
+          concrete ask. Never write @ before a name in post_message.
+        - Handoffs follow one map, so they cannot loop. The scout may pass
+          a person's request to any crewmate. The builder sends commit
+          notices to the herald and verify requests to the judge. The
+          herald may pass a README change to the builder. The judge hands
+          off to nobody. A commit notice or a verify request is never
+          answered with a handoff, and nobody hands off more than once per
+          request from a person.
+        - A webhook message (the heartbeat or the commit hook) is a nudge:
+          do the one thing it names and nothing else.
+        - A person in this room always overrides an agent. Never paste
+          secrets.
+    docs:
+      - name: mission
+        description: The rules and requirements the work must meet, as the owner pasted them.
+        instructions: The scout builds the checklist from this. Quote it when flagging a rule risk.
+        content: "{mission}"
+      - name: judging-rubric
+        description: The criteria the work is judged on.
+        instructions: The judge scores against exactly these criteria, 1 to 10 each, with evidence.
+        content: "{rubric}"
+    kickoff: |
+      @{scout.name} lights out. Load the mission and the rubric, create the pit board, and post the countdown with the first five checklist items.
+      @{builder.name} @{judge.name} @{herald.name} one line each: what you do, and the one thing you need from me.

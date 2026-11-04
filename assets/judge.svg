@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>Judge: a chequered flag</title>
+  <rect width="256" height="256" fill="#2B2D31"/>
+  <line x1="72" y1="44" x2="72" y2="216" stroke="#F4F1EA" stroke-width="12" stroke-linecap="round"/>
+  <g fill="#F4F1EA">
+    <rect x="80" y="50" width="30" height="27"/>
+    <rect x="140" y="50" width="30" height="27"/>
+    <rect x="110" y="77" width="30" height="27"/>
+    <rect x="170" y="77" width="30" height="27"/>
+    <rect x="80" y="104" width="30" height="27"/>
+    <rect x="140" y="104" width="30" height="27"/>
+  </g>
+  <rect x="80" y="50" width="120" height="81" fill="none" stroke="#F4F1EA" stroke-width="4"/>
+</svg>
