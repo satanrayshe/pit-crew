@@ -59,30 +59,31 @@ In Discord, open **User Settings**, then **Developer**, and turn on
 
 Select your Switch server in the sidebar and open its **Home** page. Under
 **Messaging apps**, select **Connect**, then **Discord**. Give the connection
-a name (for example "Pit Crew Discord"), paste the bot token and the guild id,
-and select **Connect**.
+a name (for example "Pit Crew Discord") and paste the bot token and the guild
+id. Before selecting **Connect**, open **Advanced configuration**, leave
+**Allow creating channels from Switch** on (the template creates the pit
+channel) and tick **Use for new rooms by default** (the template's
+**Messaging app** field starts on the server's default app).
 
 Console then asks which Discord account is yours: find yourself and select
 **This is me**. Do not skip this. The builder answers only its owner, and
 until your account is linked your messages look like a stranger's.
 
-## 7. Make it the default
-
-Mark the connection **Use for new rooms by default**. The template's
-**Messaging app** field starts on the server's default app.
-
-## 8. Smoke test
+## 7. Smoke test
 
 Post an ordinary message in any channel of your server. The channel should
 appear under **Your Rooms** in Console, and typing `/` in it should offer the
 Switch commands. A command cannot be the first message in a channel: posting
 is what makes a channel a room.
 
-## 9. The webhook for scripts (after the template has run)
+## 8. The webhook for scripts (after the template has run)
 
 The template creates a channel named `<crew>-pit`. In Discord, open that
-channel's settings, then **Integrations**, **Webhooks**, **New Webhook**, and
-copy its URL. Put it in `.env` at the top of your pit-crew clone:
+channel's settings, then **Integrations**, **Webhooks**, and create a new one
+with **New Webhook**. Do not copy the Switch Bridge or Switch Sessions URLs
+already listed there: the bridge drops its own webhooks' posts. Do not name
+it after an agent either; the bridge also drops posts whose sender has an
+agent's name. Copy its URL into `.env` at the top of your pit-crew clone:
 
 ```sh
 cp .env.example .env

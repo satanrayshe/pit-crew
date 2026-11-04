@@ -4,8 +4,8 @@
 #
 #   scripts/install-commit-hook.sh <crew> [repository]
 #
-# Meant for commits made outside the builder agent, by hand or in your own
-# coding-agent session. The builder already tells the herald about its own.
+# It fires for every commit in that repository, the builder's included; the
+# builder sees the hook and leaves the notice to it.
 set -euo pipefail
 
 if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then

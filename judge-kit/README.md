@@ -34,16 +34,18 @@ For a change to a large repository, scan only what the change touches, so the
 project's own test fixtures do not drown the report:
 
 ```sh
-git clone --branch my-feature https://github.com/you/fork pr-clone
-git -C pr-clone fetch https://github.com/upstream/project main
+git clone --filter=blob:none --branch my-feature https://github.com/you/fork pr-clone
+git -C pr-clone fetch --filter=blob:none https://github.com/upstream/project main
 python3 judge-kit/check.py pr-clone --mode hygiene --changed-since FETCH_HEAD
 ```
 
 `hygiene` runs only `secrets`, `local_files` and `large_files`.
-`--changed-since REF` limits them to files changed between the merge base
-of REF and HEAD, so the clone needs enough history to find it (no
-`--depth 1` here). A finding in a touched test file may still be a fixture;
-the judge reads each one.
+`--changed-since REF` limits them to files added or changed between the
+merge base of REF and HEAD, so the clone needs enough history to find it (no
+`--depth 1` here; `--filter=blob:none` keeps the history but skips old file
+contents). If no file was added or changed, the REF is probably wrong, and
+check.py stops with exit code 2. A finding in a touched test file may still
+be a fixture; the judge reads each one.
 
 ## Output
 
@@ -64,11 +66,16 @@ JSON on standard output:
 
 `files_from` is `git` (tracked files only, which is what was pushed), `walk`
 (not a git checkout, so every file), or the `git diff` range. Exit code 0
-means every check passed, 1 that at least one failed, 2 a usage error or a
-git failure.
+means every check passed, 1 that at least one failed, 2 a usage error, a git
+failure or an empty `--changed-since` diff.
 
 ## Tests
 
+The tests need pytest, and PyYAML for the template-parsing ones (they are
+skipped without it):
+
 ```sh
-python3 -m pytest judge-kit
+uv run --with pytest --with pyyaml python -m pytest judge-kit
 ```
+
+or `python3 -m pytest judge-kit` where both are installed.

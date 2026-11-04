@@ -54,7 +54,7 @@ def machine(*ready: str) -> dict[str, Any]:
 
 
 SCENARIOS = [
-    ("claude signed in", [machine("claude", "codex")], True),
+    ("claude and codex signed in", [machine("claude", "codex")], True),
     ("only codex signed in", [machine("codex")], True),
     ("nothing signed in", [machine()], False),
 ]

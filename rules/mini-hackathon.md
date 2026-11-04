@@ -7,7 +7,9 @@ first time you run the template.
 ## How to run it
 
 1. Create a small public GitHub repository for the entry, for example
-   `pit-crew-mini`, with nothing in it but an empty README, and clone it.
+   `pit-crew-mini`, with an empty README and a `.gitignore` listing
+   `.switch/` and `.claude/settings.local.json` (Console writes the
+   builder's agent token there). Push both, and clone it.
 2. Import `pit-crew.template.yaml` and fill the form:
    - **Crew name**: something new, such as `mini1`.
    - **What you are racing for**: `Mini hackathon`.
@@ -16,7 +18,7 @@ first time you run the template.
    - **Public repository** and **Project folder**: the repository you just
      made, and your clone of it.
    - **Mission** and **Judging rubric**: paste the two blocks below.
-3. Create. Then, in the new channel, try in this order:
+3. Select **Create all**. Then, in the new channel, try in this order:
    - `@scout what is at risk?`
    - `@builder build the entry described in the mission`
    - approve the push on the builder's card
@@ -34,6 +36,7 @@ The repository must have:
 - a diagram of how the pit crew and the tool fit together (a mermaid block is fine)
 - a link to a demo video, or the marker TODO(video-link) until there is one
 - a LICENSE file
+- the Switch template that set up the crew, committed as pit-crew.template.yaml
 - no secrets, no .env file, no .switch folder
 Everything must be pushed to the public repository before the deadline. Work that is not pushed does not count.
 ```
@@ -49,4 +52,4 @@ Hygiene (20%): small commits, no secrets, no stray files.
 
 The demo-video item is there on purpose: with the marker in the README the
 judge's kit reports it as missing, so you see a BLOCKED verdict and then a
-SHIP-READY one once you link any video.
+SHIP-READY one once you link any video and commit the template.

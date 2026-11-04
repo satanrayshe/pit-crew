@@ -14,7 +14,7 @@ flowchart LR
 
     subgraph Server["Switch server, local<br/>(started by Switch Console 0.40+, no Docker)"]
         room["Room pit-pit<br/>messages, docs: mission, judging-rubric,<br/>pit-board, judge-scorecard, build-log"]
-        policy["Addressing rules<br/>builder: owner only<br/>others: anyone in the room"]
+        policy["Addressing rules<br/>builder: you and your own agents<br/>others: anyone in the room"]
         cards["Approval and question cards"]
     end
 
@@ -37,7 +37,7 @@ flowchart LR
     room <--> judge
     room <--> herald
     builder -- "push, after you approve on a card" --> gh
-    judge -- "git clone --depth 1" --> gh
+    judge -- "clean-room git clone" --> gh
     herald -- "git pull" --> gh
 ```
 
@@ -50,23 +50,26 @@ flowchart LR
    OpenCode, whichever the template resolved). It works in your project
    folder. Before `git push` it asks with its question tool; Switch turns that
    into a card with buttons in Discord. Only you can answer it.
-3. After the push the builder calls `send_targeted_message` twice: a commit
-   notice to the herald and a verify request to the judge. Those are
-   agent-to-agent messages inside the room, checked by the same rules.
+3. The builder sends a commit notice to the herald with
+   `send_targeted_message` (unless the commit hook already posted one), and
+   after the push a verify request to the judge. Those are agent-to-agent
+   messages inside the room, checked by the same rules.
 4. The judge clones the public repository into a fresh folder, runs
    `judge-kit/check.py` and the README's steps, and posts a verdict with the
-   full report attached. It updates the `judge-scorecard` room document.
+   full report attached. It records the item and its answer in the
+   `judge-scorecard` room document.
 5. Next time anyone addresses the scout (or the heartbeat does), it reads the
    scorecard and the build log, recomputes the countdown from the clock and
-   updates the `pit-board` document.
+   updates the `pit-board` document, counting an item done only when the
+   scorecard says so.
 
 ## What Switch does here, and what would break without it
 
 | Feature | Switch primitive | Without Switch |
 |---|---|---|
 | Four agents and one channel from one file | Version 2 template: four `type: agent` resources, a `type: room` resource, a kickoff | Four terminals to set up by hand, each with its own prompt, folder and provider |
-| Each agent on the coding agent you choose | `type: provider` params with a fallback chain `[claude, codex, opencode]` | One vendor, or glue code per vendor |
-| The builder takes orders only from you; friends can still talk to the rest | `addressing: owner-agents` on the builder, `{anyone_in: [pit]}` on the others | Anyone in the chat could run code on your laptop, or nobody but you could join |
+| Each agent on the coding agent you choose | `type: provider` params, each a fallback chain such as `[claude, codex, opencode]` | One vendor, or glue code per vendor |
+| The builder takes orders only from you; friends can still talk to the rest | `addressing: owner-agents` on the builder, `{anyone_in: [pit]}` on the others | Anyone in the chat could set the agent in your project to work, or nobody but you could join |
 | Approve a push from your phone | Question tool to approval card with buttons on Discord, answerable only by whoever may address the agent | Sitting at the terminal, or giving the agent free rein |
 | Agents hand work to each other | `send_targeted_message` between agents in the room, under the same addressing rules | Copying output from one terminal into another |
 | Shared memory: checklist, scores, build log | Room documents (`create_room_document`, `update_room_document`, `load_internal_documents`) and template `docs:` | Notes in four separate contexts that drift apart |

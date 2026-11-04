@@ -7,11 +7,11 @@ Each commit posts "@<crew>-herald commit <short hash> <subject>" into the pit
 room through scripts/pit-post.sh. Git for Windows runs hooks with its own sh
 and curl, so the hook is a shell script on Windows too.
 
-Meant for commits made outside the builder agent, by hand or in your own
-coding-agent session. The builder already tells the herald about its own.
+It fires for every commit in that repository, the builder's included; the
+builder sees the hook and leaves the notice to it.
 
 .EXAMPLE
-scripts\install-commit-hook.ps1 -Crew pit -Repository C:\code\my-project
+powershell -ExecutionPolicy Bypass -File scripts\install-commit-hook.ps1 -Crew pit -Repository C:\code\my-project
 #>
 param(
     [Parameter(Mandatory = $true)]

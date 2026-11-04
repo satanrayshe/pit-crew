@@ -12,7 +12,7 @@ Two hours is a reasonable gap. Stop the heartbeat once the deadline passes.
 
 ## Before you schedule it
 
-1. Create the webhook and put its URL in `.env` (step 9 of
+1. Create the webhook and put its URL in `.env` (step 8 of
    [docs/discord-setup.md](../docs/discord-setup.md)).
 2. Post once by hand and watch the room:
 

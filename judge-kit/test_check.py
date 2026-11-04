@@ -426,6 +426,22 @@ def test_changed_since_scans_only_changed_files(tmp_path: Path) -> None:
     assert [(f["path"], f["kind"]) for f in secrets["findings"]] == [("new.py", "aws_access_key_id")]
 
 
+@needs_git_commit
+def test_changed_since_with_nothing_changed_fails_loudly(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    make_repo(tmp_path, {"main.py": "print('hi')\n"})
+    git(tmp_path, "init", "-q", "-b", "main")
+    git(tmp_path, "add", ".")
+    git(tmp_path, "commit", "-q", "-m", "base")
+
+    with pytest.raises(SystemExit) as exit_info:
+        check.main([str(tmp_path), "--mode", "hygiene", "--changed-since", "main"])
+
+    assert exit_info.value.code == 2
+    assert "no file was added or changed between main and HEAD" in capsys.readouterr().err
+
+
 @needs_git
 def test_changed_since_with_an_unknown_ref_fails_loudly(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]

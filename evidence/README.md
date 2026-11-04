@@ -3,12 +3,14 @@
 What Pit Crew produces while we use it for the Flip the Switch hackathon.
 Files are added as they happen and are not edited afterwards, except to
 remove anything private (tokens, webhook URLs, email addresses).
+`template-lint.txt` is the exception: it is re-run whenever the template
+changes, so it matches the committed template.
 
 ## What is here now
 
 | File | What it is |
 |---|---|
-| `template-lint.txt` | `scripts/validate-template.py` run on `pit-crew.template.yaml` with the Switch server's own code: lint findings, the run planned on three sample machines (Claude ready, only Codex ready, nothing ready), and the rendered room |
+| `template-lint.txt` | `scripts/validate-template.py` run on `pit-crew.template.yaml` with the Switch server's own code: lint findings, the run planned on three sample machines (Claude and Codex ready, only Codex ready, nothing ready), and the rendered room |
 | `judge-kit-self-check.json` | `judge-kit/check.py` run on a clean clone of commit 2560729, this repository's first. Every check passes except `readme_demo_video`, which fails on purpose while the README still says `TODO(video-link)` |
 
 ## What will be collected

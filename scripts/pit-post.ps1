@@ -7,7 +7,7 @@ The webhook URL comes from DISCORD_WEBHOOK_URL, or else from the
 DISCORD_WEBHOOK_URL line of the .env file at the top of this repository.
 
 .EXAMPLE
-scripts\pit-post.ps1 -Message "@pit-scout pit check"
+powershell -ExecutionPolicy Bypass -File scripts\pit-post.ps1 -Message "@pit-scout pit check"
 #>
 param(
     [Parameter(Mandatory = $true)]

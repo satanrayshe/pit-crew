@@ -100,6 +100,8 @@ def list_files(root: Path, changed_since: str | None) -> tuple[list[str], str]:
     if changed_since is not None:
         span = f"{changed_since}...HEAD"
         names = git_files(root, "diff", "--name-only", "--diff-filter=d", span)
+        if not names:
+            raise ValueError(f"no file was added or changed between {changed_since} and HEAD")
         source = f"git diff {span}"
     elif (root / ".git").exists():
         names = git_files(root, "ls-files")
@@ -315,6 +317,8 @@ def main(argv: list[str] | None = None) -> int:
         report = run(args.path.resolve(), args.mode, args.max_file_mb, args.changed_since)
     except subprocess.CalledProcessError as e:
         parser.exit(2, f"git failed: {e.stderr.decode('utf-8', errors='replace').strip()}\n")
+    except ValueError as e:
+        parser.exit(2, f"{e}\n")
     print(json.dumps(report, indent=2))
     return 0 if report["passed"] else 1
 
