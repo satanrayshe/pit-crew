@@ -1,0 +1,69 @@
+{
+  "path": "/tmp/clean-room-202611042034",
+  "mode": "submission",
+  "files_from": "git",
+  "yaml_parser": "pyyaml",
+  "passed": false,
+  "checks": [
+    {
+      "id": "readme_switch_section",
+      "passed": true,
+      "detail": "README.md: \"How Switch is used (and why it breaks without it)\"",
+      "findings": []
+    },
+    {
+      "id": "readme_reproduce_section",
+      "passed": true,
+      "detail": "README.md: \"Reproduce in 15 minutes\"",
+      "findings": []
+    },
+    {
+      "id": "readme_architecture",
+      "passed": true,
+      "detail": "README.md: ## Architecture",
+      "findings": []
+    },
+    {
+      "id": "readme_demo_video",
+      "passed": false,
+      "detail": "README.md still has the TODO(video-link) marker",
+      "findings": []
+    },
+    {
+      "id": "license",
+      "passed": true,
+      "detail": "LICENSE",
+      "findings": []
+    },
+    {
+      "id": "template",
+      "passed": true,
+      "detail": "1 of 1 template(s) parse",
+      "findings": [
+        {
+          "path": "pit-crew.template.yaml",
+          "ok": true,
+          "problem": null
+        }
+      ]
+    },
+    {
+      "id": "secrets",
+      "passed": true,
+      "detail": "no secret patterns in 32 file(s)",
+      "findings": []
+    },
+    {
+      "id": "local_files",
+      "passed": true,
+      "detail": "no .env, .switch/ or local agent settings committed",
+      "findings": []
+    },
+    {
+      "id": "large_files",
+      "passed": true,
+      "detail": "no file over 10 MB",
+      "findings": []
+    }
+  ]
+}
