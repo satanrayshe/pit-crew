@@ -26,5 +26,20 @@ changes, so it matches the committed template.
 | `screenshots/` | An approval card, a refused approval from a second account, verdicts | Screenshots from Discord and Console |
 
 Each judge report names the commit it reviewed, so it can be checked against
-the git history. Coding done in direct Claude Code sessions rather than by the
-builder agent shows in the build log as commits from the commit hook.
+the git history. Coding done outside the builder agent shows in the build log
+as commits from the commit hook.
+
+## Commit ids in older files
+
+The history was rewritten on 2026-11-05, so the commit ids quoted in the
+rehearsal transcripts and reports map to today's history like this:
+
+| In the files | Now |
+|---|---|
+| `2560729` | `52498ab` |
+| `b132e2d` | `e9c77e4` |
+| `891e405` | `8aa848b` |
+| `ffbdc69` | `68a8785` |
+| `f7fd62e` | `f62f1d6` |
+| `e16d499` | `fe92527` |
+
