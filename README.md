@@ -15,6 +15,10 @@ Switch itself; [evidence/](evidence/) holds what it has produced so far.
 
 Demo video: TODO(video-link)
 
+Blog post: [docs/blog.md](docs/blog.md) walks a first-time Switch user from
+installing Console to the judge's verdict, and covers what our rehearsal
+found.
+
 TODO(screenshot): the `#pit-pit` channel with the four agents, an approval
 card and a judge verdict.
 
@@ -243,7 +247,7 @@ scripts/                 pit-post, install-commit-hook (sh and PowerShell), hear
                          validate-template.py (needs a Switch checkout)
 rules/                   flip-the-switch.md (this event), mini-hackathon.md (a 2-hour trial)
 docs/                    discord-setup.md, webhooks.md, architecture.md, demo-script.md,
-                         blog-draft.md
+                         blog.md
 assets/                  agent avatars (SVG sources, PNG for the chat apps)
 evidence/                validation output, and what the crew produces as we use it
 ```
