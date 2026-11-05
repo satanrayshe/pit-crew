@@ -1,0 +1,14 @@
+{
+ "crew": "pit",
+ "event": "Rehearsal mini hackathon",
+ "deadline": "2026-11-06T05:09:00+05:30",
+ "repo_url": "https://git.pit.local/pit-crew.git",
+ "kit_url": "https://git.pit.local/pit-crew-kit.git",
+ "project_dir": "/root/fts/rehearsal/pit-project",
+ "mission": "Mini hackathon. Two hours from the moment the crew starts.\nBuild a command-line tool, in any language, that prints how long is left until a deadline given as an ISO 8601 time, for example \"T-1h12m\".\nThe repository must have:\n- a README with a section on how Switch is used and why the work would not have happened the same way without it\n- a section with the exact commands to install and run the tool, and an example of its output\n- a diagram of how the pit crew and the tool fit together (a mermaid block is fine)\n- a link to a demo video, or the marker TODO(video-link) until there is one\n- a LICENSE file\n- the Switch template that set up the crew, committed as pit-crew.template.yaml\n- no secrets, no .env file, no .switch folder\nEverything must be pushed to the public repository before the deadline. Work that is not pushed does not count.\n",
+ "rubric": "Use of Switch (30%): did the crew in the room do real work: a checklist, a reviewed push, a clean-room verdict?\nWorks (30%): does the tool run from a fresh clone by following the README exactly?\nClarity (20%): could a stranger understand the README in two minutes?\nHygiene (20%): small commits, no secrets, no stray files.\n",
+ "scout_provider": "opencode",
+ "builder_provider": "opencode",
+ "judge_provider": "opencode",
+ "herald_provider": "opencode"
+}

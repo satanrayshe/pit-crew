@@ -1,0 +1,35 @@
+# switch-core log excerpts from the Pit Crew rehearsal only (from 2026-11-04T23:40Z). Full log stays in WSL.
+
+## Bot icons: every icon_url returned 404 (raw.githubusercontent.com/satanrayshe/pit-crew is not public yet)
+2026-11-04T23:40:39 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [process_id=SS-eeb1538f tenant_id=default] [BOT-ICON] failed to set icon for pit-builder
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/builder.png'
+2026-11-04T23:40:40 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [process_id=SS-eeb1538f tenant_id=00000000-0000-0000-0000-000000000000 request_id=c295723719924bebae6fbda865980cde user_id=3495098f-d256-43e4-91a0-1ece24502b84] [BOT-ICON] failed to set icon for pit-herald
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/herald.png'
+2026-11-04T23:40:51 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [process_id=SS-eeb1538f tenant_id=00000000-0000-0000-0000-000000000000 request_id=c295723719924bebae6fbda865980cde user_id=3495098f-d256-43e4-91a0-1ece24502b84] [BOT-ICON] failed to set icon for pit-scout
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/scout.png'
+2026-11-04T23:40:51 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [process_id=SS-eeb1538f tenant_id=00000000-0000-0000-0000-000000000000 request_id=c295723719924bebae6fbda865980cde user_id=3495098f-d256-43e4-91a0-1ece24502b84] [BOT-ICON] failed to set icon for pit-judge
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://raw.githubusercontent.com/satanrayshe/pit-crew/main/assets/judge.png'
+
+## Mattermost refused cards and activity posts: Invalid RootId
+lines mentioning 'Invalid RootId' in this window: 403
+Every failing turn belongs to the template kickoff thread sw_507726f0d9a0474582bf0f76a4a6e204
+(from session_activity_items): pit-judge turn 0b619ddf, pit-scout 733ec355, pit-builder 805fa1f8, pit-herald d215f8d9.
+The kickoff is posted as a reply under 'Template kickoff on behalf of @user'; Mattermost does not accept a
+root_id that is itself a reply, so no activity card and no question card from those turns ever appeared.
+
+2026-11-04T23:44:51 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not publish ('approval', '987281cc-994d-4b12-a5aa-12da349076b8', '764e89df-3b2e-52d6-8e60-9fd176d164f0', 'que_1a8f379c90014EX9vWV2Nm1aIz') on bridge 884bc225-406d-40bf-a347-01de01cc7e2b; trying again in 5s.
+2026-11-04T23:44:56 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not publish ('approval', '987281cc-994d-4b12-a5aa-12da349076b8', '764e89df-3b2e-52d6-8e60-9fd176d164f0', 'que_1a8f379c90014EX9vWV2Nm1aIz') on bridge 884bc225-406d-40bf-a347-01de01cc7e2b; trying again in 10s.
+2026-11-04T23:45:06 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not publish ('approval', '987281cc-994d-4b12-a5aa-12da349076b8', '764e89df-3b2e-52d6-8e60-9fd176d164f0', 'que_1a8f379c90014EX9vWV2Nm1aIz') on bridge 884bc225-406d-40bf-a347-01de01cc7e2b; trying again in 20s.
+2026-11-04T23:45:24 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not publish ('approval', '987281cc-994d-4b12-a5aa-12da349076b8', '764e89df-3b2e-52d6-8e60-9fd176d164f0', 'que_1a8f379c90014EX9vWV2Nm1aIz') on bridge 884bc225-406d-40bf-a347-01de01cc7e2b; trying again in 40s.
+2026-11-04T23:46:03 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not publish ('approval', '987281cc-994d-4b12-a5aa-12da349076b8', '764e89df-3b2e-52d6-8e60-9fd176d164f0', 'que_1a8f379c90014EX9vWV2Nm1aIz') on bridge 884bc225-406d-40bf-a347-01de01cc7e2b; trying again in 80s.
+2026-11-04T23:47:19 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not publish ('approval', '987281cc-994d-4b12-a5aa-12da349076b8', '764e89df-3b2e-52d6-8e60-9fd176d164f0', 'que_1a8f379c90014EX9vWV2Nm1aIz') on bridge 884bc225-406d-40bf-a347-01de01cc7e2b; trying again in 160s.
+2026-11-04T23:49:51 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not publish ('approval', '987281cc-994d-4b12-a5aa-12da349076b8', '764e89df-3b2e-52d6-8e60-9fd176d164f0', 'que_1a8f379c90014EX9vWV2Nm1aIz') on bridge 884bc225-406d-40bf-a347-01de01cc7e2b; trying again in 320s.
+2026-11-04T23:40:56 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not post the activity for turn 0b619ddf-1ecf-505a-b8be-3ef6659a817c of session 3386773d-f9c4-5185-a724-148a538796be in channel o5338z3e7pdbt8ncgzewtdckyh: Mattermost refused the post in channel o5338z3e7pdbt8ncgzew
+2026-11-04T23:40:56 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not post the activity for turn 733ec355-143d-5d65-8396-62619700d9e1 of session 36ce41ff-8697-5588-a75d-d871049cf59f in channel o5338z3e7pdbt8ncgzewtdckyh: Mattermost refused the post in channel o5338z3e7pdbt8ncgzew
+2026-11-04T23:40:56 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not post the activity for turn 805fa1f8-35d7-5638-ab62-f665b75af38f of session 764e89df-3b2e-52d6-8e60-9fd176d164f0 in channel o5338z3e7pdbt8ncgzewtdckyh: Mattermost refused the post in channel o5338z3e7pdbt8ncgzew
+2026-11-04T23:43:10 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not post the activity for turn d215f8d9-c509-5e1f-b1d5-591097cb8bac of session c8dc8656-51b9-56b5-a420-522853ee3583 in channel o5338z3e7pdbt8ncgzewtdckyh: Mattermost refused the post in channel o5338z3e7pdbt8ncgzew
+2026-11-04T23:43:21 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not post the activity for turn 57b08732-ac31-5363-a4b7-9d0758895679 of session e445cb6b-f62e-5822-9f5e-f45f6e6d95ad in channel in5o9x63m7rtbc6zdwq4x5oc7h: Mattermost refused the post in channel in5o9x63m7rtbc6zdwq4
+2026-11-04T23:43:21 ERROR [switch_core.session_activity.publisher] [process_id=SS-eeb1538f tenant_id=default] Could not post the activity for turn afd5fd9a-f56b-5381-b5f7-9cbd37f56a42 of session 84632a8e-a65d-5247-8c3c-efcc80e6ed8a in channel n8r8n7e9ajfktm4feyn61ibfja: Mattermost refused the post in channel n8r8n7e9ajfktm4feyn6
+
+## Friend pressing Approve on the builder's card A1
+2026-11-05T00:01:33 WARNI [switch_core.session_activity.bridge_answers] [process_id=SS-eeb1538f tenant_id=00000000-0000-0000-0000-000000000000 request_id=mattermost-1d362fe238e24fad room_id=8f9cf692-9cb5-4e13-a280-5d70ae20f5b7 bridge=collaboration platform=mattermost] Answer to card A1 on bridge 884bc225-406d-40bf-a347-01de01cc7e2b refused (NOT_AUTHORIZED): You may not address this agent, so you may not answer it.

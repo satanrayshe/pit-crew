@@ -1,0 +1,10 @@
+# approval_requests rows for the fx-builder agent (98121ea5...), from Switch's Postgres, end of the after-fix run.
+# mattermost_cards = rows in approval_request_posts: the card Switch posted to Mattermost for the request.
+           request_id           |  state   |          created_at           |          answered_at          |                              answered_by                               |   question    | chosen  | mattermost_cards 
+--------------------------------+----------+-------------------------------+-------------------------------+------------------------------------------------------------------------+---------------+---------+------------------
+ que_1a939d0d0001QjXJ8NoVxWTP6m | answered | 2026-11-05 01:01:41.195878+00 | 2026-11-05 01:02:00.429853+00 | @switch-mattermost-884bc225-406d-40bf-a347-01de01cc7e2b-user:localhost | Push approval | ["0:0"] |                1
+(1 row)
+
+# approval requests raised by the other three fx agents (scout c9c5190a, judge aaa9d306, herald 86602ad7):
+     0
+

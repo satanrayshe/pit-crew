@@ -1,0 +1,57 @@
+{
+ "created_agents": [
+  {
+   "slot": "pit-builder",
+   "agent_id": "987281cc-994d-4b12-a5aa-12da349076b8",
+   "name": "pit-builder",
+   "machine": {
+    "id": "4c97b1b5-e1e0-4830-bf08-ae48bb01d499",
+    "name": "wsl-rehearsal"
+   },
+   "listening": true
+  },
+  {
+   "slot": "pit-herald",
+   "agent_id": "e5d84264-6dcf-4cc5-a3bb-e00f096a9343",
+   "name": "pit-herald",
+   "machine": {
+    "id": "4c97b1b5-e1e0-4830-bf08-ae48bb01d499",
+    "name": "wsl-rehearsal"
+   },
+   "listening": true
+  },
+  {
+   "slot": "pit-scout",
+   "agent_id": "fba6bb0c-b0dc-41fc-ba14-f98eacd84aca",
+   "name": "pit-scout",
+   "machine": {
+    "id": "4c97b1b5-e1e0-4830-bf08-ae48bb01d499",
+    "name": "wsl-rehearsal"
+   },
+   "listening": true
+  },
+  {
+   "slot": "pit-judge",
+   "agent_id": "eb20642e-140a-4ff3-9041-c807f17e826d",
+   "name": "pit-judge",
+   "machine": {
+    "id": "4c97b1b5-e1e0-4830-bf08-ae48bb01d499",
+    "name": "wsl-rehearsal"
+   },
+   "listening": true
+  }
+ ],
+ "room": {
+  "room_id": "8f9cf692-9cb5-4e13-a280-5d70ae20f5b7",
+  "room_name": "pit-pit",
+  "attached_reference_ids": [],
+  "attached_package_ids": [],
+  "created_reference_ids": [],
+  "created_document_ids": [
+   "669901f4-ec12-433c-b43c-08c94f59d0b1",
+   "604bf350-e5ef-49ef-9b0a-7f7148ee4a97"
+  ],
+  "role_names": [],
+  "failed_attachments": []
+ }
+}

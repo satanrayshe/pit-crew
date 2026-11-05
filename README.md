@@ -37,11 +37,11 @@ feature, set up by [`pit-crew.template.yaml`](pit-crew.template.yaml):
 | Four agents and a channel from one file | Version 2 template: four `type: agent` resources, one `type: room`, a kickoff | Four terminals set up by hand |
 | Each agent on the coding agent you pick | `type: provider` params, each a fallback chain such as `[claude, codex, opencode]` | One vendor, or glue code per vendor |
 | Only you direct the builder; friends can talk to the rest | `addressing: owner-agents` on the builder, `{anyone_in: [pit]}` on the others | Anyone in the chat could set the agent in your project to work, or nobody else could join |
-| Approve a push from your phone | The builder's question tool becomes a card with buttons in Discord; who may press it follows the agent's addressing | Sit at the terminal, or let the agent push unchecked |
+| Approve a push from your phone | The builder's question tool becomes a card with buttons in your chat app; who may press it follows the agent's addressing | Sit at the terminal, or let the agent push unchecked |
 | Agents hand work to each other | `send_targeted_message` inside the room | Copy and paste between terminals |
 | Shared checklist, scorecard and build log | Room documents (`create_room_document`, `update_room_document`, `load_internal_documents`), plus the template's `docs:` | Four contexts that drift apart |
 | Reports and drafts land in the chat | `send_attachment` | Files nobody else sees |
-| Git hooks and a scheduler can nudge agents | The Discord bridge relays third-party webhook posts into the room | No way in from outside |
+| Git hooks and a scheduler can nudge agents | The Discord, Slack and Mattermost bridges relay incoming-webhook posts into the room | No way in from outside |
 
 ## Architecture
 
@@ -87,7 +87,10 @@ are building, cloned locally.
      server).
    - **Public repository** and **Project folder**: your repo and your local
      clone of it. Add `.switch/` and `.claude/settings.local.json` to that
-     project's `.gitignore`; Console writes the builder's agent token there.
+     project's `.gitignore`. Switch keeps the template's agent tokens
+     outside your project, but depending on the coding agent, session
+     files may land under `.switch/`, and agents added to the folder by
+     hand in Console keep their token in `.switch/agents/`.
    - **Mission** and **Judging rubric**: for a first try, paste the two
      blocks from [rules/mini-hackathon.md](rules/mini-hackathon.md), set
      **What you are racing for** to `Mini hackathon` and the **Deadline**
@@ -101,12 +104,14 @@ are building, cloned locally.
    wakes the crew: the scout posts the pit board and countdown, the others
    say hello. Then try `@scout what is at risk?`, give the builder a small
    task and approve its push on the card, and ask `@judge review`.
-8. **Optional: hooks.** Create a new webhook on the channel (step 8 of
-   [docs/discord-setup.md](docs/discord-setup.md)), put its URL in `.env`
-   (copy `.env.example`), then:
+8. **Optional: hooks.** Create a new incoming webhook on the channel
+   (Discord: step 8 of [docs/discord-setup.md](docs/discord-setup.md);
+   Slack or Mattermost: [docs/webhooks.md](docs/webhooks.md)), put its URL
+   in `.env` as `PIT_WEBHOOK_URL` (copy `.env.example`), then:
    - `scripts/install-commit-hook.sh <crew> <project folder>` tells the
-     herald about every commit in that repository, the builder's included
-     (the builder sees the hook and leaves the notice to it). On Windows:
+     herald about every commit in that repository, including yours from
+     outside the crew. The builder still sends its own notice, and the
+     herald logs each commit once. On Windows:
      `powershell -ExecutionPolicy Bypass -File scripts\install-commit-hook.ps1 -Crew <crew> -Repository <project folder>`.
    - [scripts/heartbeat.md](scripts/heartbeat.md) sets up a pit check every
      two hours with cron or Task Scheduler.
@@ -138,9 +143,9 @@ python3 judge-kit/check.py path/to/clone --mode hygiene --changed-since FETCH_HE
 It checks the README for a "how Switch is used" section, reproduce steps, an
 architecture diagram and a demo video link; a license; that every
 `*.template.yaml` parses; secrets (Discord bot tokens and webhook URLs, GitHub,
-OpenAI, Anthropic, AWS, Google and Slack keys, private keys, all redacted in
-the output); committed `.env`, `.switch/` or `.claude/settings.local.json`
-files; and files over 10 MB. Exit code 0 means every check passed. The tests
+OpenAI, Anthropic, AWS and Google keys, Slack keys and webhook URLs, private
+keys, all redacted in the output); committed `.env`, `.switch/` or
+`.claude/settings.local.json` files; and files over 10 MB. Exit code 0 means every check passed. The tests
 need pytest, and PyYAML for the template-parsing ones:
 `uv run --with pytest --with pyyaml python -m pytest judge-kit`, or
 `python3 -m pytest judge-kit` where both are installed. More in
@@ -158,7 +163,10 @@ or not shown, with evidence.
 ## Evidence
 
 [evidence/](evidence/) holds what the crew has produced so far: the
-template's validation output and the judge kit's check of this repository.
+template's validation output, the judge kit's check of this repository's
+first commit, and a full rehearsal of the template on a local Mattermost
+with a free model, before and after the fixes it led to
+([evidence/rehearsal-mattermost/](evidence/rehearsal-mattermost/README.md)).
 Judge reports, pit-board snapshots and the build log go there as the crew
 produces them. See [evidence/README.md](evidence/README.md) for what each
 file is.
@@ -175,10 +183,14 @@ Each file in the evidence folder says where it came from.
 
 - Switch has no scheduler. Agents wake only when addressed. The scout
   recomputes the countdown from the clock on every wake, and the heartbeat is
-  an outside cron job or scheduled task posting through a Discord webhook.
-- Webhook posts reach the room as an app. They can address the scout, judge
-  and herald (open to anyone in the room), never the builder. Check it once
-  by hand before relying on the heartbeat.
+  an outside cron job or scheduled task posting through the channel's
+  incoming webhook.
+- Webhook posts reach the room as an app (on Mattermost, as "user's
+  webhook" when your account is `user`). They can address the scout, judge
+  and herald (open to anyone in the room), never the builder. Check it once by hand before relying on
+  the heartbeat. On Mattermost, create the webhook as yourself, never as the
+  account Switch's bridge signs in as: the bridge ignores that account's
+  posts ([docs/webhooks.md](docs/webhooks.md)).
 - Anyone in the room can wake the scout, judge and herald and answer their
   approval cards. None of them writes to your project, but all three run
   commands on your machine, and the judge runs a cloned repository's
@@ -197,6 +209,20 @@ Each file in the evidence folder says where it came from.
 - A builder on Codex has no question forms (Codex only offers them in Plan
   mode), so it asks in the room instead of on a card. Approvals from the
   provider's own auto mode still arrive as cards.
+- On Mattermost, a card raised in a turn the kickoff started never shows:
+  Switch posts the kickoff as a thread reply, and Mattermost refuses
+  anything threaded under a reply ("Invalid RootId parameter"). So the
+  kickoff asks for one line each and no work. If an agent still looks stuck
+  on a question after the kickoff, answer it in Console; a message to that
+  agent waits behind the open question.
+- The kickoff wakes four agents at once. On OpenCode one of them can fail
+  to start ("database is locked"); it says so in the room. Address it
+  again.
+- The agents' pictures and the judge's kit (`kit_url`, under Advanced) come
+  from github.com/satanrayshe/pit-crew, so that repository has to be public.
+  In a fork, set `kit_url` to your fork. If the pictures cannot be fetched,
+  the agents keep default ones; if the kit cannot be cloned, the judge does
+  its checks by hand and says so.
 - Four agents share one subscription and your coding agent's limits.
   `!follow-ups off` keeps unaddressed chatter from waking them;
   `!interrupt-all-agents` stops everyone.
@@ -212,8 +238,9 @@ judge-kit/               check.py (stdlib only), its tests, its README
 scripts/                 pit-post, install-commit-hook (sh and PowerShell), heartbeat.md,
                          validate-template.py (needs a Switch checkout)
 rules/                   flip-the-switch.md (this event), mini-hackathon.md (a 2-hour trial)
-docs/                    discord-setup.md, architecture.md, demo-script.md, blog-draft.md
-assets/                  agent avatars (SVG sources, PNG for Discord)
+docs/                    discord-setup.md, webhooks.md, architecture.md, demo-script.md,
+                         blog-draft.md
+assets/                  agent avatars (SVG sources, PNG for the chat apps)
 evidence/                validation output, and what the crew produces as we use it
 ```
 

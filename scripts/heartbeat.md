@@ -4,15 +4,16 @@ Switch has no scheduling tool. An agent wakes only when a message addresses
 it. The scout recomputes the countdown from the clock every time it wakes, so
 the pit board is right whenever somebody asks. A heartbeat makes it ask on its
 own: every two hours it posts `@<crew>-scout pit check` into the room through
-the channel's Discord webhook, and the scout updates the board and posts one
-line with the countdown and the tally.
+the channel's incoming webhook (Discord, Slack or Mattermost), and the scout
+updates the board and posts one line with the countdown and the tally.
 
 Every heartbeat starts a scout turn, which spends your coding agent's quota.
 Two hours is a reasonable gap. Stop the heartbeat once the deadline passes.
 
 ## Before you schedule it
 
-1. Create the webhook and put its URL in `.env` (step 8 of
+1. Create the webhook and put its URL in `.env` as `PIT_WEBHOOK_URL`
+   ([docs/webhooks.md](../docs/webhooks.md); for Discord, step 8 of
    [docs/discord-setup.md](../docs/discord-setup.md)).
 2. Post once by hand and watch the room:
 
@@ -21,8 +22,8 @@ Two hours is a reasonable gap. Stop the heartbeat once the deadline passes.
    ```
 
    If the scout answers, the heartbeat will work. If the message appears but
-   the scout stays quiet, the room did not let the webhook address it; see
-   "Known limits" in the [README](../README.md#known-limits).
+   the scout stays quiet, Switch did not take the post into the room; see
+   [docs/webhooks.md](../docs/webhooks.md) for your chat app.
 
 Replace `pit` with your crew name and the paths with where you cloned
 pit-crew.

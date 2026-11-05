@@ -41,6 +41,11 @@ BUILTINS = {
 
 
 def machine(*ready: str) -> dict[str, Any]:
+    """A machine with all three coding agents installed and only `ready` signed in.
+
+    "opencode" signed in also covers OpenCode with no account at all, on its
+    free models: our rehearsal machine reported that as auth "ok".
+    """
     return {
         "id": "m-1",
         "name": "laptop",
@@ -56,6 +61,7 @@ def machine(*ready: str) -> dict[str, Any]:
 SCENARIOS = [
     ("claude and codex signed in", [machine("claude", "codex")], True),
     ("only codex signed in", [machine("codex")], True),
+    ("only opencode signed in", [machine("opencode")], True),
     ("nothing signed in", [machine()], False),
 ]
 

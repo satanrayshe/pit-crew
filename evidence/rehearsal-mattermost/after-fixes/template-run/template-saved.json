@@ -1,0 +1,18 @@
+{
+ "id": "b633bc3c-8694-4fa7-b768-e917c1bf3d35",
+ "owner_id": "3495098f-d256-43e4-91a0-1ece24502b84",
+ "owner_name": "Admin",
+ "name": "Pit Crew (after fixes)",
+ "description": "Rehearsal import after the fixes",
+ "kind": "room",
+ "read_visibility": "public",
+ "write_visibility": "private",
+ "official": false,
+ "can_edit": true,
+ "can_manage": true,
+ "version": 1,
+ "size_bytes": 20095,
+ "created_at": "2026-11-05 00:57:59.995655+00:00",
+ "updated_at": "2026-11-05 00:57:59.995655+00:00",
+ "content": "(omitted: byte-identical to pit-crew.template.yaml in the commit that adds this folder)"
+}

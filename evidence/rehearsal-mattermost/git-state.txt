@@ -1,0 +1,51 @@
+# The judged remote (repo_url https://git.pit.local/pit-crew.git, rewritten by a system git insteadOf to a local bare repo)
+f11fa02 satanrayshe 2026-11-05T00:06:25+00:00 docs: clone the judged repository in the reproduce step
+e8d5f9f satanrayshe 2026-11-04T23:52:53+00:00 feat: add a --version flag to pit_clock
+42981e9 satanrayshe 2026-11-04T23:44:28+00:00 feat: add a deadline countdown CLI
+891e405 satanrayshe 2026-11-05T02:29:50+05:30 fix: judge pull requests from a blobless clone and tighten the crew's rules
+b132e2d satanrayshe 2026-11-05T02:04:27+05:30 docs(evidence): add the judge kit's check of the first commit
+2560729 satanrayshe 2026-11-05T02:04:00+05:30 feat: add Pit Crew, a Switch template for a crew of agent teammates
+
+# The builder's project folder (project_dir /root/fts/rehearsal/pit-project, a clone of that remote)
+dbf7422 satanrayshe 2026-11-05T00:19:31+00:00 docs: tie the Switch section to the actual run
+f026b9b satanrayshe 2026-11-05T00:07:42+00:00 docs: remove the stale judge-kit self-check evidence
+f11fa02 satanrayshe 2026-11-05T00:06:25+00:00 docs: clone the judged repository in the reproduce step
+e8d5f9f satanrayshe 2026-11-04T23:52:53+00:00 feat: add a --version flag to pit_clock
+42981e9 satanrayshe 2026-11-04T23:44:28+00:00 feat: add a deadline countdown CLI
+891e405 satanrayshe 2026-11-05T02:29:50+05:30 fix: judge pull requests from a blobless clone and tighten the crew's rules
+b132e2d satanrayshe 2026-11-05T02:04:27+05:30 docs(evidence): add the judge kit's check of the first commit
+## main...origin/main [ahead 2]
+
+# Files the builder's commits touched
+ README.md                          | 59 +++++++++++++++++++++++++++--
+ evidence/README.md                 |  1 -
+ evidence/judge-kit-self-check.json | 69 ----------------------------------
+ pit_clock.py                       | 76 ++++++++++++++++++++++++++++++++++++++
+ tests/test_pit_clock.py            | 71 +++++++++++++++++++++++++++++++++++
+ 5 files changed, 202 insertions(+), 74 deletions(-)
+
+# Anything Switch or OpenCode wrote into the project folder (ignored or untracked)
+!! __pycache__/
+!! tests/__pycache__/
+
+# The judge's own directory
+clean-room-202611042353
+clean-room-202611042354
+clean-room-202611050007
+pit-crew-kit
+
+# The herald's own directory
+/root/.switch/agents/localhost-8000/pit-herald/readme-switch-section.md
+
+/root/.switch/agents/localhost-8000/pit-herald/:
+pit-crew
+readme-switch-section.md
+
+# The judge's pull-request clone (README 'Using it on a pull request'), clean-room-202611050036
+remote.origin.partialclonefilter=blob:none  branch=rehearsal-pr  shallow=false
+dbf7422 docs: tie the Switch section to the actual run
+f026b9b docs: remove the stale judge-kit self-check evidence
+f11fa02 docs: clone the judged repository in the reproduce step
+
+# Models that served the rehearsal turns (OpenCode's own log, llm.model= since 23:40Z)
+    170 llm.model=big-pickle

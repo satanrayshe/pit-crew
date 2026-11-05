@@ -10,8 +10,9 @@ changes, so it matches the committed template.
 
 | File | What it is |
 |---|---|
-| `template-lint.txt` | `scripts/validate-template.py` run on `pit-crew.template.yaml` with the Switch server's own code: lint findings, the run planned on three sample machines (Claude and Codex ready, only Codex ready, nothing ready), and the rendered room |
-| `judge-kit-self-check.json` | `judge-kit/check.py` run on a clean clone of commit 2560729, this repository's first. Every check passes except `readme_demo_video`, which fails on purpose while the README still says `TODO(video-link)` |
+| `template-lint.txt` | `scripts/validate-template.py` run on `pit-crew.template.yaml` with the Switch server's own code: lint findings, the run planned on four sample machines (Claude and Codex ready, only Codex ready, only OpenCode ready, nothing ready), and the rendered room |
+| `judge-kit-self-check-2560729.json` | `judge-kit/check.py` run on a clean clone of commit 2560729, this repository's first. Historical: it quotes that commit's README ("Reproduce in 15 minutes"), not today's. Every check passes except `readme_demo_video`, which fails on purpose while the README still says `TODO(video-link)`. The judge runs the kit afresh on every review |
+| `rehearsal-mattermost/` | A full run of the template on a local Switch server and Mattermost, every agent on a free OpenCode model: 23 scenarios, what failed, and the re-run after the fixes. Its README has the details |
 
 ## What will be collected
 

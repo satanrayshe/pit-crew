@@ -17,6 +17,9 @@ their own Discord account) appears in scenes 3 and 4.
 - Hide anything private: email addresses, tokens, the webhook URL, account
   pages in Console settings.
 - Record the phone screen for scene 4 separately and cut it in.
+- Run scene 4 once off camera. The builder asks on a card before every
+  push, even when your message says "and push"; an older version of the
+  template took those words as the approval and pushed without a card.
 - The judge blocks Pit Crew until its README links a video, so the
   SHIP-READY shot in scene 7 needs a video link already in the README (an
   unlisted rehearsal cut), or shoot that scene on the mini-hackathon

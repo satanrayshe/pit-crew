@@ -1,0 +1,32 @@
+# State after the after-fix run
+
+# The judged remote (repo_url file:///root/fts/rehearsal/git/pit-crew-r2.git, a bare clone of the first run's remote)
+29b47c5 satanrayshe 2026-11-05T01:01:28+00:00 docs: add changelog entry
+f11fa02 satanrayshe 2026-11-05T00:06:25+00:00 docs: clone the judged repository in the reproduce step
+e8d5f9f satanrayshe 2026-11-04T23:52:53+00:00 feat: add a --version flag to pit_clock
+
+# The builder's project folder (project_dir /root/fts/rehearsal/fx-project)
+29b47c5 satanrayshe 2026-11-05T01:01:28+00:00 docs: add changelog entry
+f11fa02 satanrayshe 2026-11-05T00:06:25+00:00 docs: clone the judged repository in the reproduce step
+## main...origin/main
+
+# The post-commit hook scripts/install-commit-hook.sh installed there. The scripts were copied to
+# /root/fts/rehearsal/fx-tools, whose .env holds PIT_WEBHOOK_URL (not reproduced here).
+#!/bin/sh
+# installed by pit-crew
+sha=$(git rev-parse --short HEAD)
+subject=$(git log -1 --format=%s)
+"/root/fts/rehearsal/fx-tools/scripts/pit-post.sh" "@fx-herald commit $sha $subject" ||
+  echo "pit-crew: could not tell the herald about $sha" >&2
+
+# The judge's own directory at the end. Before its second review, three clean-room folders stamped
+# 202611040101, 202611040102 and 202611040103 (one file each) were planted beside its first, 202611050103.
+clean-room-202611040103
+clean-room-202611050103
+clean-room-202611050106
+pit-crew-kit
+report-clean-room-202611050103.md
+report-clean-room-202611050106.md
+
+# Models that served the turns (OpenCode's own log, llm.model= since 00:58Z)
+     76 llm.provider=opencode llm.model=big-pickle

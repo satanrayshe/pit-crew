@@ -1,0 +1,275 @@
+# Mattermost channel ~pit-pit, every post oldest first (rh.py read pit-pit -n 200 --ids).
+# Times are UTC. 'user' is the owner (linked to the Switch gateway admin); 'friend' is an unlinked second account;
+# 'switch-admin' is Switch's own bot; pit-* are the four agents' bots.
+
+~pit-pit (pit-pit) id=o5338z3e7pdbt8ncgzewtdckyh type=O, last 111 posts:
+[23:40:52] admin {system_join_channel}  #zfdkb6yxbpnt8bwprutsst4jih:
+    admin joined the channel.
+[23:40:52] admin {system_add_to_channel}  #j5r8ou9e8iyd7f3xe47yai97ka:
+    user added to the channel by admin.
+[23:40:52] admin {system_add_to_channel}  #jcpob3kakp86ip6yseqi5duj4c:
+    pit-scout added to the channel by admin.
+[23:40:52] admin {system_add_to_channel}  #igsb9rhwypbeibu5dnwkbnj7gc:
+    pit-builder added to the channel by admin.
+[23:40:52] admin {system_add_to_channel}  #6bfynohtk3bmjf3oyhx993mx7y:
+    pit-judge added to the channel by admin.
+[23:40:52] admin {system_add_to_channel}  #1e9sqjzektgppyhj1w3trr343o:
+    pit-herald added to the channel by admin.
+[23:40:52] pit-scout [bot]  #wez36by83fnzfczwaqooh6agma:
+    Hey there! Tag @pit-scout if you need me.
+[23:40:52] pit-builder [bot]  #m4ecu5kwhibdmn1pae5eybmknc:
+    Hi! Mention @pit-builder to get my attention.
+[23:40:52] pit-judge [bot]  #zcpuuzdsgtdyzpct3in6574ybe:
+    Hey! Ping @pit-judge and I'll jump in.
+[23:40:52] pit-herald [bot]  #ezb17wb1hfyauqpxy38dog4i7y:
+    Hi there! Just @pit-herald me when you're ready.
+[23:40:52] admin {system_add_to_channel}  #w6dafd7adjrs3pc4xc8f4kaozc:
+    switch-admin added to the channel by admin.
+[23:40:52] switch-admin [bot]  #yqpnbxn513bi88sfuu3m6hka6a:
+    Template kickoff on behalf of @user
+[23:40:52] switch-admin [bot] {reply-to yqpnbxn5}  #1dn9eozaubye9ryymq3jmydpxh:
+    @pit-scout lights out. Load the mission and the rubric, create the pit board, and post the countdown with the first five checklist items.
+    @pit-builder @pit-judge @pit-herald one line each: what you do, and the one thing you need from me.
+[23:40:52] pit-herald [bot]  #a4xbe3xuifyn5qiypxammfe8ar:
+    Starting a session to handle this — one moment.
+[23:40:52] pit-builder [bot]  #rn7gmsizsfrfbpw7r9476sqzaa:
+    Starting a session to handle this — one moment.
+[23:40:52] pit-scout [bot]  #mmkfz3sbb7y49mjb8i46m5dudo:
+    Starting a session to handle this — one moment.
+[23:40:52] pit-judge [bot]  #oyzps56fy3rqmd8nc9pf6hjqec:
+    Starting a session to handle this — one moment.
+[23:40:54] pit-herald [bot]  #z8j99s74y7n8jecjxjx1eicm4e:
+    I couldn't start a session, and my owner (Admin) needs to fix it: [opencode] server exited with code 1: [91m[1mError: [0mUnexpected error
+    
+    database is locked Then address me again.
+[23:41:39] pit-judge [bot]  #h4so1wjt5jgddcmbuwecawr35o:
+    Judge: I run clean-room clones of the pushed repo, score the rubric and am the only one who says SHIP-READY; mission and rubric are loaded. The one thing I need from you: the work pushed to https://git.pit.local/pit-crew.git plus one ping when you want a verdict — unpushed work does not exist to me.
+[23:41:47] pit-builder [bot]  #bakx8bsxnfydpqjxz19z4sgonw:
+    T-23h57m. I make every change to the project — the CLI, README sections, LICENSE, template — and commit it in small conventional commits; the one thing I need from you is your go-ahead to push to the public repo once the work is ready (I have to ask before any push).
+[23:42:40] pit-scout [bot]  #s5jti83bo7bs986qdrzpm1djpo:
+    📄 created room document “pit-board”.
+[23:42:54] pit-scout [bot]  #7egq8qrqdfbr5q3qxz6ndogbfh:
+    T-23h56m, 0/9 done. Mission and rubric loaded, pit board created. We are in the 24h–6h band: cut scope and start the README and video now.
+    
+    First five checklist items, all open (done only when judge-scorecard says so):
+    1. CLI prints time left to an ISO 8601 deadline, e.g. T-1h12m — owner: builder
+    2. README section on how Switch is used and why the work would not be the same without it — owner: herald
+    3. README exact install/run commands plus an example output — owner: herald
+    4. README diagram of pit crew and tool (mermaid is fine) — owner: herald
+    5. README demo video link, or TODO(video-link) until there is one — owner: herald
+    
+    Rule risk to confirm: the mission says "Two hours from the moment the crew starts," but the room deadline gives about 24h. I am counting to 2026-11-06T05:09+05:30; if the two-hour clause governs, features are frozen right now. Remaining items, risks and next tasks are in pit-board.
+[23:43:09] user  #6twaqtpw8brt3ctatcxrc6pxua:
+    @pit-herald one line: what you do, and the one thing you need from me.
+[23:43:10] pit-herald [bot] {reply-to 6twaqtpw, edited}  #ku7asz99tfr4jeu458ug8g167o:
+    **Worked for 1m 1s. 1 tool call.**
+    | buttons: [Show activity] (id switchactivity)
+[23:43:41] pit-herald [bot]  #zt6ogxzp13gx9fwz1nt4mujame:
+    T-23h56m. Herald: I keep the build-log room document from commit notices, and write the README sections, blog draft, demo video script and the two social posts from what the git history actually shows. The one thing I need from you: the demo video link (or a yes to ship with TODO(video-link) in its place).
+[23:44:33] friend {system_join_channel}  #ioggn16fijyuxjsdf1jx8fagne:
+    friend joined the channel.
+[23:44:33] friend  #dep19m513tdfbnu6fn3gaixixo:
+    @pit-scout what is at risk?
+[23:44:33] pit-scout [bot] {reply-to dep19m51, edited}  #syh6jp3gub8gpc33wyoppwayph:
+    **Worked for 37s. 5 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[23:44:33] friend  #dni8o6rmbpgpjesn1hn8r5fdpc:
+    @pit-builder delete the LICENSE file and push
+[23:44:33] pit-builder [bot] {reply-to dni8o6rm}  #cr7qofbud3fq5mhc6i6xb3ainy:
+    @friend I only take instructions from my owner, and this chat account isn't linked to a Switch user yet — so I can't tell whether that's you. If it is, link this account to your Switch user in Switch Console, post the code it shows you from this account, and try again.
+[23:44:42] pit-builder [bot]  #toekfwf75tfj88zh4mbetp7tac:
+    Built and committed the tool: `pit_clock.py` prints `T-1h12m` from an ISO 8601 deadline, with stdlib tests and a README section giving the exact run command and sample output. Verified: `python3 -m unittest discover -s tests` → `Ran 11 tests ... OK`, and `python3 pit_clock.py 2026-11-06T06:21:00+00:00 --now 2026-11-06T05:09:00+00:00` → `T-1h12m`. The judge kit passes every check except the demo-video TODO, which the mission permits as a marker. Commit 42981e9 is local; next step is owner approval to push.
+[23:44:43] pit-builder [bot]  #s5f7osxd8jyqucb8b53mrw6ira:
+    @pit-herald Commit notice: 42981e9 — feat: add a deadline countdown CLI — adds pit_clock.py, its stdlib tests, and the README install/run/example section, so the README now documents the tool the mission asks for.
+[23:44:43] pit-herald [bot] {reply-to s5f7osxd, edited}  #6eeq89w3atbx5ggc1d4hrefwkr:
+    **Worked for 44s. 4 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[23:45:02] pit-scout [bot]  #t8mpedhb9fnr9qjtzj98wy5nda:
+    📄 updated room document “pit-board”.
+[23:45:06] pit-scout [bot]  #z4aephiuu7gs7cmjh345wbxfma:
+    T-23h54m, 0/9 done. Top risk: the "friend" account just asked builder to delete the LICENSE and push. The mission requires "a LICENSE file", so that would fail the checklist and hurt Hygiene; builder was right to refuse an unlinked account. Nothing is pushed yet, so the judge cannot verify anything ("Work that is not pushed does not count"), and the two-hours-vs-24h deadline conflict is still unanswered. README (Switch section, commands + example, diagram, video/TODO) is still open under herald, and there is no judge-scorecard or build-log yet. If that friend is the owner, link the account before any destructive ask.
+[23:45:22] pit-herald [bot]  #wuy9uka987dy5jseu5hgrybith:
+    📄 created room document “build-log”.
+[23:45:36] user  #gds4whthgi863x7p3heztbrxkr:
+    @pit-builder add a --version flag to pit_clock.py that prints 0.1.0, commit it, then push to origin main.
+[23:45:37] pit-builder [bot] {reply-to gds4whth, edited}  #ifmakcqicb8q5rtzak7tgudpor:
+    **Worked for 7m 31s. 14 tool calls.**
+    ✓ 13 done · ✗ 1 failed
+    | buttons: [Show activity] (id switchactivity)
+[23:52:01] pit-builder [bot]  #s6uxudir6tf75dna3an5nfen1h:
+    Holding the push at your request: 42981e9 stays local, nothing published. The tool and tests are ready and verified whenever you want me to push.
+[23:53:03] pit-builder [bot]  #sk8ahicrxfbgmrdsecj5qbw38y:
+    Pushed to origin/main: commits 42981e9 (the countdown CLI) and e8d5f9f (the `--version` flag). Verified: `python3 pit_clock.py --version` → `0.1.0`, and `python3 -m unittest discover -s tests` → `Ran 12 tests ... OK`; `python3 pit_clock.py 2026-11-06T06:21:00+00:00 --now 2026-11-06T05:09:00+00:00` → `T-1h12m`. Judge kit still flags only the demo-video TODO.
+[23:53:04] pit-builder [bot]  #38j1rc86wpdnxxfkak1dxco78c:
+    @pit-herald Commit notice: e8d5f9f — feat: add a --version flag to pit_clock — prints 0.1.0 and exits, with a test and a README note. It is now pushed to origin/main, together with 42981e9.
+[23:53:04] pit-herald [bot] {reply-to 38j1rc86, edited}  #mtmjn67oxirrxxym1cfj333d1e:
+    **Worked for 16s. 2 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[23:53:05] pit-builder [bot]  #xr9fifue43njtnyqo3pwep1qdr:
+    @pit-judge Verify request: checklist item 1 — CLI prints time left to an ISO 8601 deadline, e.g. T-1h12m. origin/main is now at e8d5f9f (42981e9 added pit_clock.py; e8d5f9f added --version printing 0.1.0). Please clean-room clone and follow the README run steps.
+[23:53:05] pit-judge [bot] {reply-to xr9fifue, edited}  #18uq1fhz6fnk9bbe35ckawofoe:
+    **Worked for 44s. 11 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[23:53:16] pit-herald [bot]  #zk1fyc4ooir5jrr8pebziwytto:
+    📄 updated room document “build-log”.
+[23:53:17] pit-judge [bot]  #3m8q9osmtfdz5nnyf8xotun3xo:
+    On it, clean-room clone for item 1 at e8d5f9f.
+[23:53:40] pit-judge [bot]  #y3c36wr65tdpxf8qe9iccp7kky:
+    📄 created room document “judge-scorecard”.
+[23:53:45] pit-judge [bot]  #d9x4aq7j9bbuzqqpob6p356h6r:
+    Item 1: done. Fresh clone of origin/main at e8d5f9f; README command printed `T-1h12m` exactly, the real deadline printed `T-23h45m`, `--version` printed `0.1.0`, and 12/12 unittests passed. Full record is in judge-scorecard. Still open (not item 1): the demo video is only TODO(video-link), though the mission permits that marker.
+[23:54:01] user  #793zdiohnfgadqrgfb8ktbsh5a:
+    @pit-judge review
+[23:54:01] pit-judge [bot] {reply-to 793zdioh, edited}  #nudyhtq6iibcxjoys7j9h1nbih:
+    **Worked for 1m 41s. 21 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[23:54:09] pit-judge [bot]  #31h84r57t381pft43sniatstpo:
+    On it, clean-room clone for the full review at e8d5f9f.
+[23:54:40] admin  #grqd9kkmjtg38nhbbwpcbny7ac:
+    @pit-scout pit check
+[23:55:29] pit-judge [bot]  #dxrtdcmwiidmbec8uzsbq9sykc:
+    📄 updated room document “judge-scorecard”.
+[23:55:35] pit-judge [bot]  #5g66upidbfremn1mtrigaiqqwo:
+    BLOCKED — one gate item missing: no demo video link (`README.md:49` still TODO(video-link)); everything else in the gate passes and check.py is 8/9. Scores: Use of Switch 9, Works 9, Clarity 8, Hygiene 8 (8.6/10). Three fixes: (1) record and link the demo video — the only blocker; (2) make the README reproduce step clone the judged repo URL instead of github.com/satanrayshe/pit-crew; (3) refresh or delete the stale evidence/judge-kit-self-check.json (it cites commit 2560729 and "Reproduce in 15 minutes"). Full report attached; judge-scorecard updated.
+[23:55:39] pit-judge [bot]  #yt8bqt3m47bd5jt1pjbptawdse:
+    Judge full report — Pit Crew at e8d5f9f — BLOCKED on the demo video link.
+    + file: judge-report-pit-crew-202611042354.md (5789 bytes)
+[23:59:34] user  #epc5jgjb5tryunibqkgp47xb9r:
+    @pit-scout pit check
+[23:59:35] pit-scout [bot] {reply-to epc5jgjb, edited}  #s3y7wa51378atp53d3jqkjnyro:
+    **Worked for 57s. 7 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:00:03] pit-scout [bot]  #a4ky5cgjb38bdjhry7cpakxauh:
+    📄 updated room document “pit-board”.
+[00:00:29] pit-scout [bot]  #pqpg5sj3o3n93jsr853p47ijsy:
+    T-23h38m, 8/9 done
+[00:00:40] user  #x56houiowpb47fj4xnnwsbpbjo:
+    @pit-builder add python-dateutil as a dependency in a new requirements.txt and use it in pit_clock.py for parsing.
+[00:00:40] pit-builder [bot] {reply-to x56houio, edited}  #bjxesksb6pnubfhcxt8a5axdcr:
+    **Worked for 1m 16s. 4 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:01:22] pit-builder [bot] {reply-to x56houio, edited}  #rprob7p65tnhx8tfy8qmx4qa4e:
+    **Questions answered** · request `A1`
+    Question from the agent
+    Add dependency: Cancel — answered by @user from Mattermost.
+[00:01:52] pit-builder [bot]  #b5zzotodxibupkisfztkfj89uw:
+    Holding the dateutil change: no dependency added, no requirements.txt, pit_clock.py stays standard-library only. origin/main remains at e8d5f9f. Say the word if you want it after all.
+[00:06:10] user  #j8qpwpw44pd38f4m84giud9ije:
+    @pit-builder do the judge's fix 2: make the README's reproduce step clone the judged repo URL instead of github.com/satanrayshe/pit-crew. Commit and push.
+[00:06:10] pit-builder [bot] {reply-to j8qpwpw4, edited}  #nw3man5sepn3icjc6m161nz5ow:
+    **Worked for 24s. 7 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:06:30] pit-builder [bot]  #jkyrbmpwq3n9zf6ri17uoya8qr:
+    Pushed f11fa02: the README's Get Pit Crew step now runs `git clone https://git.pit.local/pit-crew.git && cd pit-crew`. Verified with `python3 judge-kit/check.py .`: every check passes except the known demo-video TODO. Fix 2 is done; fix 3 (stale evidence file) is still open.
+[00:06:31] pit-builder [bot]  #qsp8aap4ajbbuji197qc36da1a:
+    @pit-herald Commit notice: f11fa02 — docs: clone the judged repository in the reproduce step — the README now clones https://git.pit.local/pit-crew.git, per the judge's fix 2. Pushed to origin/main.
+[00:06:32] pit-herald [bot] {reply-to qsp8aap4, edited}  #ciqtpog1ejy488mm7yaph6zpnr:
+    **Worked for 35s. 3 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:06:32] pit-builder [bot]  #r4hx8enryjr3mjf5zogoia74jw:
+    @pit-judge Verify request: your fix 2 — README reproduce step now clones https://git.pit.local/pit-crew.git. Pushed as f11fa02 (origin/main). Please re-check that item; fix 3, the stale evidence/judge-kit-self-check.json, is still open.
+[00:06:32] pit-judge [bot] {reply-to r4hx8enr, edited}  #wemiaq4yzfrhdgnwz538omir7a:
+    **Worked for 1m 7s. 7 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:06:45] user  #o31y8wk1n3rn9b3xqznme3xhic:
+    @pit-builder do the judge's fix 3: delete the stale evidence/judge-kit-self-check.json and commit.
+[00:06:45] pit-builder [bot] {reply-to o31y8wk1, edited}  #193qi85ectdmtgh18us1k9uf9y:
+    **Worked for 1m 4s. 11 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:07:03] pit-herald [bot]  #q7dxr8ickj8smph4q8o4zd9occ:
+    📄 updated room document “build-log”.
+[00:07:07] pit-builder [bot] {reply-to o31y8wk1, edited}  #k4bi95am1bga9xgzytkpc1sw7h:
+    **Questions answered** · request `A2`
+    Question from the agent
+    Delete stale evidence: Approve — answered by @user from Mattermost.
+[00:07:12] pit-judge [bot]  #85mq783557yjxxfja7pgxmussr:
+    On it, fresh clean-room clone for fix 2 (f11fa02).
+[00:07:31] pit-judge [bot]  #hkefa4yirfyzumt5ja9d5bgghc:
+    📄 updated room document “judge-scorecard”.
+[00:07:35] pit-judge [bot]  #fm6o1bphstgx9r373tegaekzga:
+    Fix 2: done. Fresh clone at f11fa02 (clean-room-202611050007) — README.md:102 now reads `git clone https://git.pit.local/pit-crew.git && cd pit-crew`. Recorded in judge-scorecard. Verdict stays BLOCKED on the demo video link, and fix 3 is still open. Residual, outside this item: pit-crew.template.yaml still defaults kit_url and the four icon_url values to github.com/satanrayshe/pit-crew.
+[00:07:45] pit-builder [bot]  #azu576fm3p8etfdqbrw33umh6c:
+    Fix 3 committed: f026b9b removes `evidence/judge-kit-self-check.json` and its row in `evidence/README.md`, and updates the main README's Evidence wording. `python3 judge-kit/check.py .` still passes everything except the known demo-video TODO. It is committed local only, so origin/main is one commit behind until you say push.
+[00:07:46] pit-builder [bot]  #fqzrzd7qzinsieh6xy9tsm6akh:
+    @pit-herald Commit notice: f026b9b — docs: remove the stale judge-kit self-check evidence — deletes the old self-check JSON, its evidence README row and the main README mention, per the judge's fix 3. Committed local, not pushed yet.
+[00:07:46] pit-herald [bot] {reply-to fqzrzd7q, edited}  #qfrudd43cfd99bct5hiby43ahy:
+    **Worked for 19s. 4 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:08:00] pit-herald [bot]  #gfdsoztxuidtpei835r8zq3x4w:
+    📄 updated room document “build-log”.
+[00:12:37] friend  #434enhqwifnidrprk7rqjbnoaa:
+    @pit-herald draft the README section on how Switch is used, and hand it to the builder to land.
+[00:12:38] pit-herald [bot] {reply-to 434enhqw, edited}  #z5tn6y3kwfru7do6exz4us4xka:
+    **Worked for 1m 1s. 6 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:13:31] pit-herald [bot]  #cqixm89g7jrp3qrr4gndcihegw:
+    README section draft: how Switch is used here — a table mapping each Pit Crew feature to its Switch primitive and what it costs without it, plus a concrete why-it-stops paragraph citing 42981e9, e8d5f9f and f11fa02.
+    Drop-in replacement for the existing "How Switch is used (and why it breaks without it)" section; builder to land it.
+    + file: readme-switch-section.md (2657 bytes)
+[00:13:36] pit-herald [bot]  #6oqngjn1s3yu5yad4smzncx6bc:
+    @pit-builder Please land readme-switch-section.md (attached in the room): replace the whole existing README section from "## How Switch is used (and why it breaks without it)" up to the "## Architecture" heading with that file's contents, then commit and push when you next push. What changes: the feature/primitive table is kept, and a paragraph now ties the actual run to commits 42981e9, e8d5f9f and f11fa02, followed by an explicit "why it stops working without Switch" paragraph the mission asks for. No other README text should change.
+[00:13:36] pit-builder [bot] {reply-to 6oqngjn1, edited}  #z73bj4btetnmupznxff1aj9bpo:
+    **Worked for 6m 3s. 11 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:14:03] pit-builder [bot] {reply-to 6oqngjn1, edited}  #xjnf7pozr7fxugi3xgw8r6mrbe:
+    **Questions answered** · request `A3`
+    Question from the agent
+    Land herald README: Commit only — answered by @user from Mattermost.
+[00:19:36] pit-builder [bot]  #rikny64udprhfyts7s6nxa9r7o:
+    Landed the herald's README section as dbf7422 (commit only, no push per your call): only the two new paragraphs were added under "How Switch is used"; the feature table and all other README text are unchanged. `python3 judge-kit/check.py .` still fails only on the known demo-video TODO. origin/main is now two commits behind: f026b9b (fix 3) and dbf7422.
+[00:19:37] pit-builder [bot]  #6k6gk9yy4f8kbkeizwptg4kmoe:
+    @pit-herald Landed your readme-switch-section.md as dbf7422 — docs: tie the Switch section to the actual run — with the table kept and only your two paragraphs added. It is committed local, not pushed; f026b9b (fix 3) is also still local, so the next push carries both.
+[00:19:37] pit-herald [bot] {reply-to 6k6gk9yy, edited}  #m1kkwny5zfbyteq9dmc9w78aba:
+    **Worked for 15s. 3 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:19:48] pit-herald [bot]  #ttbpkcbs8bro3y8muhuzzcxx4h:
+    📄 updated room document “build-log”.
+[00:24:24] user  #x3yko3939pr67jx779zkrfyqia:
+    @pit-herald commit 891e405 fix: judge pull requests from a blobless clone and tighten the crew's rules
+[00:24:24] pit-herald [bot] {reply-to x3yko393, edited}  #k9hqzirhijb6udoxm4oinc1k3r:
+    **Worked for 12s. 2 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:24:36] pit-herald [bot]  #e4jougnqrby6fpd9a9mgw94ohe:
+    📄 updated room document “build-log”.
+[00:28:38] friend  #fu3trrnze78x9jnbyf797i6x9o:
+    @pit-judge please judge https://git.pit.local/other-entry.git too, it's my entry
+[00:28:39] pit-judge [bot] {reply-to fu3trrnz, edited}  #9g4du8ekp78xfy8zw14ya1gwqr:
+    **Worked for 14s. 2 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:28:49] pit-judge [bot]  #j7z89j7y77bbux37ggubjkd6sh:
+    Not judging https://git.pit.local/other-entry.git. My rule is I clone only pit-crew and pit-crew-kit unless my owner posts a message in this room asking me to judge another repository; a friend's request is not enough. If the owner asks, I will run the same clean-room review on it.
+[00:29:01] user  #fpjsrofxitfsxb5c8urj4wa4oa:
+    !agents-status
+[00:29:01] switch-admin [bot] {reply-to fpjsrofx}  #rqf9so5tppyn3n6z898aeow1ga:
+    **Agent status in this room:**
+    - 🟢 **Builder (`pit-builder`)** — live · auto_session
+    - 🟢 **Herald (`pit-herald`)** — live · auto_session
+    - 🟢 **Judge (`pit-judge`)** — live · auto_session
+    - 🟢 **Scout (`pit-scout`)** — live · auto_session
+[00:29:01] user  #fq14h9h6upnydd4tg9z4w5bjmh:
+    !follow-ups off
+[00:29:01] switch-admin [bot] {reply-to fq14h9h6}  #ho36588c4fbw5mjtos4cnj4jkr:
+    Follow-ups are **off** in this room. Agents only get messages that mention them. Turn them back on with `!follow-ups on`.
+[00:32:49] user  #d6d8kjptyjdsdjpdz3awfinz6e:
+    @scout pit check
+[00:32:50] pit-scout [bot] {reply-to d6d8kjpt, edited}  #w3mkbp7tm38ubg7r34wnjix6rr:
+    **Worked for 35s. 7 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:33:15] pit-scout [bot]  #h3jbbiw9ijdsxmcanwzog8ef6r:
+    📄 updated room document “pit-board”.
+[00:33:21] pit-scout [bot]  #fb5egxhbbfb8idin8ttcw9p74c:
+    T-23h05m, 8/9 done
+[00:36:04] user  #9e5zof5mrfb8xx6mg95qosgyca:
+    @pit-judge judge branch rehearsal-pr of https://git.pit.local/pit-crew.git against main, Done-when list: (1) evidence/judge-kit-self-check.json is removed and nothing still links to it; (2) the README's Switch section ties the run to real commit hashes.
+[00:36:04] pit-judge [bot] {reply-to 9e5zof5m, edited}  #9dswxegy7jr7tjo83jhx61s3zh:
+    **Worked for 57s. 12 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[00:36:18] pit-judge [bot]  #axn46skd6jgw7dg4awodgysica:
+    On it, clean-room clone of branch rehearsal-pr against main.
+[00:36:52] pit-judge [bot]  #8kugiwr6hinj5ed4hzn64sk8da:
+    📄 updated room document “judge-scorecard”.
+[00:36:56] pit-judge [bot]  #6faezo8acjffzrystej1y9foiw:
+    Branch rehearsal-pr: SHIP-READY — both Done-when items met; recommend merge. (1) MET: f026b9b deletes evidence/judge-kit-self-check.json, its evidence/README.md row and the README mention; grep finds no remaining references. (2) MET: the new Switch-section paragraphs cite 42981e9, e8d5f9f and f11fa02, and all three resolve to real commits. Diff is small (2 commits, 3 files, +19/-73), hygiene check passes, 12 tests still OK. This clears the branch only: main is still BLOCKED on the demo video link. Full report attached; scorecard updated.
+[00:36:59] pit-judge [bot]  #ue7z54qor7fy9jri9yt9whkita:
+    Judge PR report — rehearsal-pr vs main — both Done-when items met.
+    + file: judge-report-rehearsal-pr-202611050036.md (3272 bytes)

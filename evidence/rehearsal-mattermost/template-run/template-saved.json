@@ -1,0 +1,18 @@
+{
+ "id": "4f94f1aa-772f-48c5-8ae4-f00f280d64ab",
+ "owner_id": "3495098f-d256-43e4-91a0-1ece24502b84",
+ "owner_name": "Admin",
+ "name": "Pit Crew",
+ "description": "Rehearsal import",
+ "kind": "room",
+ "read_visibility": "public",
+ "write_visibility": "private",
+ "official": false,
+ "can_edit": true,
+ "can_manage": true,
+ "version": 1,
+ "size_bytes": 19246,
+ "created_at": "2026-11-04 23:40:38.980362+00:00",
+ "updated_at": "2026-11-04 23:40:38.980362+00:00",
+ "content": "(omitted: byte-identical to pit-crew.template.yaml at 891e405)"
+}

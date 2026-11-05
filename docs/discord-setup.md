@@ -88,14 +88,15 @@ agent's name. Copy its URL into `.env` at the top of your pit-crew clone:
 ```sh
 cp .env.example .env
 # then edit .env:
-DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+PIT_WEBHOOK_URL=https://discord.com/api/webhooks/...
 ```
 
 `.env` is in `.gitignore`. Treat the URL like a password: anyone who has it
 can post into your room. `scripts/pit-post.sh` (or `pit-post.ps1`) reads it
 from the environment or from that file; see
 [scripts/heartbeat.md](../scripts/heartbeat.md) for the heartbeat and the
-README for the commit hook.
+README for the commit hook. On Slack or Mattermost, see
+[webhooks.md](webhooks.md) instead.
 
 Messages the webhook posts reach the room as an app, not as you. The scout,
 judge and herald admit anyone in the pit room, so a webhook post can address

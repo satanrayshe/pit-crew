@@ -1,6 +1,6 @@
 # scripts/validate-template.py pit-crew.template.yaml
 # Switch checkout: sandbox-quantum/switch main @ eba577ee7 (2026-11-04)
-# Run: 2026-11-04T20:58Z with: uv run --project <switch>/core python scripts/validate-template.py pit-crew.template.yaml
+# Run: 2026-11-05T01:12Z with: uv run --project <switch>/core python scripts/validate-template.py pit-crew.template.yaml
 
 == Lint: 0 error(s), 0 warning(s)
 
@@ -26,6 +26,20 @@
   agent    pit-judge      provider=codex     addressing=anyone in pit-pit
            directory={$agents_dir}/pit-judge
   agent    pit-scout      provider=codex     addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-scout
+  room     pit-pit on Pit Crew Discord, users=['racer']
+           agents=['pit-scout', 'pit-builder', 'pit-judge', 'pit-herald']
+           docs=['mission', 'judging-rubric']
+  kickoff  @pit-scout lights out. Load the mission and the rubric, create the pit b...
+
+== Plan: only opencode signed in
+  agent    pit-builder    provider=opencode  addressing=owner-agents
+           directory=/home/racer/project
+  agent    pit-herald     provider=opencode  addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-herald
+  agent    pit-judge      provider=opencode  addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-judge
+  agent    pit-scout      provider=opencode  addressing=anyone in pit-pit
            directory={$agents_dir}/pit-scout
   room     pit-pit on Pit Crew Discord, users=['racer']
            agents=['pit-scout', 'pit-builder', 'pit-judge', 'pit-herald']

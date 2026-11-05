@@ -1,0 +1,10 @@
+# agent-controller log excerpts (headless controller 'wsl-rehearsal'). Full log: /root/fts/rehearsal/logs/controller.log in WSL.
+
+Session c8dc8656-51b9-56b5-a420-522853ee3583 could not start: [opencode] server exited with code 1: [91m[1mError: [0mUnexpected error
+
+database is locked Its 1 room message(s) stay queued; it is started again when the room next addresses the agent or the session is restarted from Console.
+Session host at /root/.local/state/switch/sdk-sessions/dc76814f78773fe0d6651ef2199656c2c32308630e972a2e8e6f3995ce8971bc stopped: Error: Shared SDK host failed with exit code 1.
+Could not address this agent's owner (Admin) about session c8dc8656-51b9-56b5-a420-522853ee3583 failing to start: 400: {"detail":"Targets not in room: Admin. Room participants: pit-builder, pit-herald, pit-judge, pit-scout, switch-admin, user."}. Telling the room without addressing them.
+Room 8f9cf692-9cb5-4e13-a280-5d70ae20f5b7 addressed the agent again; starting session c8dc8656-51b9-56b5-a420-522853ee3583 again after it failed ([opencode] server exited with code 1: [91m[1mError: [0mUnexpected error
+
+database is locked).

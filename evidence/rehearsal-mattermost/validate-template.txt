@@ -1,0 +1,42 @@
+# scripts/validate-template.py pit-crew.template.yaml, run in WSL before the rehearsal
+# Switch checkout: f420abf7a feat(providers): add Mistral Vibe as an agent provider (main eba577ee7 + the Mistral Vibe provider commit)
+# Command: uv run --project <switch>/core python scripts/validate-template.py pit-crew.template.yaml
+
+== Lint: 0 error(s), 0 warning(s)
+
+== Plan: claude and codex signed in
+  agent    pit-builder    provider=claude    addressing=owner-agents
+           directory=/home/racer/project
+  agent    pit-herald     provider=claude    addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-herald
+  agent    pit-judge      provider=codex     addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-judge
+  agent    pit-scout      provider=claude    addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-scout
+  room     pit-pit on Pit Crew Discord, users=['racer']
+           agents=['pit-scout', 'pit-builder', 'pit-judge', 'pit-herald']
+           docs=['mission', 'judging-rubric']
+  kickoff  @pit-scout lights out. Load the mission and the rubric, create the pit b...
+
+== Plan: only codex signed in
+  agent    pit-builder    provider=codex     addressing=owner-agents
+           directory=/home/racer/project
+  agent    pit-herald     provider=codex     addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-herald
+  agent    pit-judge      provider=codex     addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-judge
+  agent    pit-scout      provider=codex     addressing=anyone in pit-pit
+           directory={$agents_dir}/pit-scout
+  room     pit-pit on Pit Crew Discord, users=['racer']
+           agents=['pit-scout', 'pit-builder', 'pit-judge', 'pit-herald']
+           docs=['mission', 'judging-rubric']
+  kickoff  @pit-scout lights out. Load the mission and the rubric, create the pit b...
+
+== Plan: nothing signed in
+  refused  pit-builder: provider_unresolved
+  refused  pit-herald: provider_unresolved
+  refused  pit-judge: provider_unresolved
+  refused  pit-scout: provider_unresolved
+
+OK: no lint findings; every scenario planned or was refused as expected.
+exit code: 0

@@ -1,0 +1,26 @@
+# switch-core and agent-controller log excerpts for the after-fix run (crew fx, Mattermost channel 43b14h5883bhxphxmhdoszcrga), from 00:58Z.
+# Full logs stay in WSL: /root/fts/rehearsal/logs/.
+
+## Activity posts Mattermost refused in fx-pit (Invalid RootId), by turn: the four turns the threaded kickoff started.
+## Switch bug, still there; these are the 'Worked for ...' status posts, not cards.
+lines: 100
+     17 turn 5cbc5f1e-1220-5c55-a295-02c004cf7735 of session 445de3b2-1279-5880-ab99-70496756dabf
+     40 turn 8d6bb805-bc7d-5242-831c-f1b3a544763f of session 4095c047-46ad-597a-8c3a-aac3149d0adc
+     21 turn e6f5c214-3c46-5a65-8035-3f5ea4213f29 of session b6f9df9c-414f-5df1-83de-2382909d2962
+     22 turn fd56123d-a19b-583d-a081-ed04161031e0 of session d9aedfe7-8528-5361-8593-a062f9760e49
+
+## Approval or question cards that could not be published (the first run had one: the builder's push question)
+lines: 0
+
+## Cards posted, and answers from Mattermost
+2026-11-05T01:01:41 INFO  [switch_core.session_activity.publisher] Posted card A1 for request que_1a939d0d0001QjXJ8NoVxWTP6m of session 445de3b2-1279-5880-ab99-70496756dabf in channel 43b14h5883bhxphxmhdoszcrga
+2026-11-05T01:01:55 WARNI [switch_core.session_activity.bridge_answers] Answer to card A1 on bridge 884bc225-406d-40bf-a347-01de01cc7e2b refused (NOT_AUTHORIZED): You may not address this agent, so you may not answer it.
+
+## Bot icons (icon_url on raw.githubusercontent.com/satanrayshe/pit-crew, not public yet)
+2026-11-05T00:58:00 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [BOT-ICON] failed to set icon for fx-builder
+2026-11-05T00:58:01 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [BOT-ICON] failed to set icon for fx-herald
+2026-11-05T00:58:02 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [BOT-ICON] failed to set icon for fx-scout
+2026-11-05T00:58:13 ERROR [switch_core.bridges.collaboration.mattermost.adapter] [BOT-ICON] failed to set icon for fx-judge
+
+## Controller: sessions that could not start (the first run had one, 'database is locked')
+controller log lines from the first mention of an fx agent (line 92): 19; 'could not start' among them: 0

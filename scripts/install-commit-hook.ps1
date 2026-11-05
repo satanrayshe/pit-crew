@@ -7,8 +7,9 @@ Each commit posts "@<crew>-herald commit <short hash> <subject>" into the pit
 room through scripts/pit-post.sh. Git for Windows runs hooks with its own sh
 and curl, so the hook is a shell script on Windows too.
 
-It fires for every commit in that repository, the builder's included; the
-builder sees the hook and leaves the notice to it.
+It fires for every commit in that repository, the builder's included. The
+builder still sends its own notice (the herald logs each hash once), because
+a hook that cannot post only says so on stderr and the commit stands.
 
 .EXAMPLE
 powershell -ExecutionPolicy Bypass -File scripts\install-commit-hook.ps1 -Crew pit -Repository C:\code\my-project

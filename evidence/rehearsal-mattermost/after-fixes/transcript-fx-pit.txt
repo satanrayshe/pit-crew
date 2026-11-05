@@ -1,0 +1,142 @@
+# Mattermost channel ~fx-pit, every post oldest first (rh.py read fx-pit -n 200 --ids).
+# Times are UTC. 'user' is the owner (linked to the Switch gateway admin). Posts the owner's incoming
+# webhook made also show as 'user' here; Switch takes them in as "user's webhook".
+# 'friend' is an unlinked second account; 'switch-admin' is Switch's own bot; fx-* are the four agents.
+
+~fx-pit (fx-pit) id=43b14h5883bhxphxmhdoszcrga type=O, last 54 posts:
+[00:58:13] admin {system_join_channel}  #csadguntpfdidgj68jsxbq13ba:
+    admin joined the channel.
+[00:58:13] admin {system_add_to_channel}  #m9n7qgz4a7rsjxfgtzp3w77wao:
+    user added to the channel by admin.
+[00:58:13] admin {system_add_to_channel}  #99x5c8fixjg88e5mtsw3cbncfo:
+    fx-scout added to the channel by admin.
+[00:58:13] admin {system_add_to_channel}  #hm1o3chmk7bxtbz9kf99hhzzsa:
+    fx-builder added to the channel by admin.
+[00:58:13] admin {system_add_to_channel}  #rhjkiy5e3tgq7dmenkmdzjatpc:
+    fx-judge added to the channel by admin.
+[00:58:13] admin {system_add_to_channel}  #t1gq9r6xn7nrmjdjnec1n7bb5h:
+    fx-herald added to the channel by admin.
+[00:58:13] fx-scout [bot]  #h4qzgtxp9pdm5cf84irtx8grch:
+    Hello! I'm ready — just tag @fx-scout when you need me.
+[00:58:13] fx-builder [bot]  #p1jrd8bnz7gojbp8h4jwykz8ea:
+    Hi! I'm here to help — mention @fx-builder anytime.
+[00:58:13] fx-judge [bot]  #piyn4g1ktfrn3eqfbd3kf7oc9a:
+    Hi! Mention @fx-judge to get my attention.
+[00:58:13] fx-herald [bot]  #eerhzy5zs3ni8ntxh317ut9yko:
+    Hey! Ping @fx-herald and I'll jump in.
+[00:58:13] admin {system_add_to_channel}  #oxf6ki9b4by9ib9uzdemth5uby:
+    switch-admin added to the channel by admin.
+[00:58:13] switch-admin [bot]  #crf3cf5s7byjzjzg7s8cy8py5r:
+    Template kickoff on behalf of @user
+[00:58:13] switch-admin [bot] {reply-to crf3cf5s}  #bf3niqzqs7nztxfpbacpq3b6ta:
+    @fx-scout lights out. Load the mission and the rubric, create the pit board, and post the countdown with the first five checklist items.
+    @fx-builder @fx-judge @fx-herald one line each: what you do, and the one thing you need from me. Do not start any work yet.
+[00:58:13] fx-builder [bot]  #chb8xuyenir5tkoe8knmzifj1y:
+    Starting a session to handle this — one moment.
+[00:58:13] fx-herald [bot]  #nyoxudosqbyz9gcqc1rzjzm99w:
+    Starting a session to handle this — one moment.
+[00:58:13] fx-scout [bot]  #z6jq5awfkty6bpf9usmzs9pyie:
+    Starting a session to handle this — one moment.
+[00:58:13] fx-judge [bot]  #kg5confebf8m38k1i73zzmdkha:
+    Starting a session to handle this — one moment.
+[00:58:35] fx-builder [bot]  #1an9ytcsn7n7pk6jbxu6zknyua:
+    fx-builder: I'm the only one who changes the project — small conventional commits, run before I report, herald after each commit, judge for verify. The one thing I need from you: your actual task for the project (the kickoff isn't one) plus a yes that `file:///root/fts/rehearsal/git/pit-crew-r2.git` is what I work against. Not starting anything yet.
+[00:58:39] fx-judge [bot]  #7gxf6qrgkbg35g6j6md6aqgamo:
+    Judge: I clone the pushed repo clean-room, run the kit's mechanical checks, follow the README as a stranger, gate on the Switch/README/diagram/repro/template/video/license/no-secrets rules, then post the SHIP-READY or BLOCKED verdict and scorecard — the one thing I need from you is the real demo video link before I can clear the gate.
+[00:58:42] fx-herald [bot]  #drzqhj68tbry3ck95nxekdmpzc:
+    Herald: I turn the git history into the build log, README sections (including the Switch section), blog and social drafts — I need the real demo video URL, or a date you'll have it, since the README can only say TODO(video-link) for so long. Standing by, no work started.
+[00:59:10] fx-scout [bot]  #k958bmh7c7diddn9oyzwapbboh:
+    📄 created room document “pit-board”.
+[00:59:14] fx-scout [bot]  #xp81re4fgpyj7rn1n9dbpfum8y:
+    T-1h57m, 0/9 done. Pit board is up; mission and rubric loaded. No judge-scorecard yet, so no mission row can be marked done.
+    
+    First five checklist items:
+    1. open — CLI prints time left to an ISO 8601 deadline (e.g. T-1h12m) — builder
+    2. open — README: how Switch is used, and why the work would not have happened the same way without it — herald
+    3. open — README: exact install and run commands, plus example output — herald
+    4. open — README: diagram of the pit crew and the tool — herald
+    5. open — README: link to a real demo video — person
+    
+    Rule risk now: item 5 still says TODO(video-link); the judge blocks until there is a real link. Under 2h, features are frozen — only what the checklist still needs.
+[01:00:04] user  #6a6gy78n7pdt7rxydrujhysp5o:
+    !follow-ups off
+[01:00:05] switch-admin [bot] {reply-to 6a6gy78n}  #9nsknk7xojb5bbqjpe3qgbz5mc:
+    Follow-ups are **off** in this room. Agents only get messages that mention them. Turn them back on with `!follow-ups on`.
+[01:00:22] user  #pt8isoqp9tdbjy1mjs1dryruzh:
+    pit-post check (no agent addressed): "double quotes", a back\slash, a tab	here, unicode é ✓
+    second line
+[01:00:22] user  #6t7crwnifinb9forpqmduqx4tw:
+    pit-post check (no agent addressed): sent through DISCORD_WEBHOOK_URL
+[01:00:37] user  #a4t6okchfbyptce37163rk131h:
+    pit-post.ps1 check from Windows PowerShell (no agent addressed): quotes, back\slash, é
+[01:00:51] user  #g6rb513h1pbgpy8khhxcci9f6c:
+    @fx-builder add a CHANGELOG.md with one line, "- Rehearsed Pit Crew on Mattermost after the fixes.", commit it, and push.
+[01:00:51] fx-builder [bot] {reply-to g6rb513h, edited}  #wdw79rg16ibztrr5es6bqg5o9c:
+    **Worked for 1m 20s. 13 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[01:01:17] fx-builder [bot]  #payoe91w5ifqmm9jgq5o5xykcy:
+    On it — CHANGELOG task taken.
+    - Add CHANGELOG.md containing the single line `- Rehearsed Pit Crew on Mattermost after the fixes.`
+    - Verify the working tree contains only that file, then commit as `docs: add changelog entry`
+    - Send the hash to fx-herald
+    - Ask you to approve the push (it gets its own question even though you asked), then push to origin/main.
+[01:01:28] user  #apwq56dkztb8ieifxqc6tjegxr:
+    @fx-herald commit 29b47c5 docs: add changelog entry
+[01:01:28] fx-herald [bot] {reply-to apwq56dk, edited}  #dtw8zy9fyff45gjo1ix9apbufe:
+    **Worked for 23s. 5 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[01:01:36] fx-builder [bot]  #q6758bxhbpf6jp96c11ryks4tr:
+    @fx-herald Commit 29b47c5 — docs: add changelog entry — adds CHANGELOG.md with the owner's one-line note so the repo records the post-fix Mattermost rehearsal.
+[01:01:37] fx-herald [bot] {reply-to q6758bxh, edited}  #wi6hh7ad1fgxtyesbnt6tok9ho:
+    **Worked for 19s.**
+    | buttons: [Show activity] (id switchactivity)
+[01:01:40] fx-herald [bot]  #5h9wy4k1siy49xfri78cmyejda:
+    📄 created room document “build-log”.
+[01:01:41] fx-builder [bot] {reply-to g6rb513h, edited}  #tuwuo73epp8f3mt6pptj8s8euo:
+    **Questions answered** · request `A1`
+    Question from the agent
+    Push approval: Approve — answered by @user from Mattermost.
+[01:02:07] fx-builder [bot]  #1rk45gtdfb8midqi6idce3i9ar:
+    Done. `CHANGELOG.md` has the one line, committed and pushed.
+    
+    `git push origin main` → `f11fa02..29b47c5  main -> main`; local HEAD and `git ls-remote origin refs/heads/main` both `29b47c5`. Herald got the commit notice. Not a mission checklist item, so no judge verify request.
+[01:02:54] user  #o6zoa7skqjn7ig9wyni9ucydyo:
+    @fx-judge review
+[01:02:54] fx-judge [bot] {reply-to o6zoa7sk, edited}  #bbejydwd9bdkidtksyopfnqcco:
+    **Worked for 1m 36s. 19 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[01:03:01] fx-judge [bot]  #ygs3j156rf8qurfcn1zounyi8h:
+    On it, clean-room clone.
+[01:04:19] fx-judge [bot]  #pkzb4d9yhjrdir6z9ao8wud5ce:
+    📄 created room document “judge-scorecard”.
+[01:04:23] fx-judge [bot]  #x1z7d4mn6b8wiqma6pyatn1wpw:
+    BLOCKED at 29b47c5. check.py passes 8/9; the only failure is `readme_demo_video` — README.md:49 still says `TODO(video-link)`, so the gate stays shut. Scores: Switch 7, Works 10, Clarity 8, Hygiene 8. Top fixes: (1) publish the real demo video and replace the TODO, (2) commit the pit-board/build-log/judge evidence into evidence/, (3) fix the `git.pit.local` clone URL in README step 1. Full report attached; scorecard and mission table are in the judge-scorecard document.
+[01:04:26] fx-judge [bot]  #9o5puj1ee7bqzn7izbkmnxogty:
+    Judge report — pit-crew-r2 @ 29b47c5 — BLOCKED
+    + file: report-clean-room-202611050103.md (4846 bytes)
+[01:04:41] user  #ush5t9n4kt8ujcpni5zzry9rth:
+    @fx-scout pit check
+[01:04:41] fx-scout [bot] {reply-to ush5t9n4, edited}  #tq8pyp8u4tn67nyptkaifhpcjr:
+    **Worked for 48s. 7 tool calls.**
+    ✓ 6 done · ✗ 1 failed
+    | buttons: [Show activity] (id switchactivity)
+[01:05:22] fx-scout [bot]  #3xy44gekuinztckgaxj6sussnr:
+    📄 updated room document “pit-board”.
+[01:05:27] fx-scout [bot]  #w1rnpxfkqtdsjj8d8sqy4s6gmy:
+    T-1h52m, 10/12 done
+[01:06:21] user  #jeqqjhozkpgt3cb6ezye5hpyme:
+    @fx-judge review again, please
+[01:06:21] fx-judge [bot] {reply-to jeqqjhoz, edited}  #t8jjfspxctb5dreegiihfayyxo:
+    **Worked for 57s. 9 tool calls.**
+    | buttons: [Show activity] (id switchactivity)
+[01:06:27] fx-judge [bot]  #q76rf3bxsjbkd85xx1m9o8g15h:
+    On it, clean-room clone.
+[01:07:08] fx-judge [bot]  #myxbhs91t3yw78y6mw4ow8g9oo:
+    📄 updated room document “judge-scorecard”.
+[01:07:12] fx-judge [bot]  #7xjf5y1987b35xfimz5obq58fe:
+    BLOCKED, unchanged. The pushed tip is still `29b47c5` at 01:06 UTC — no new commit since my 01:03 review — and check.py still fails only `readme_demo_video` (`README.md:49` says `TODO(video-link)`). Scores stay Switch 7, Works 10, Clarity 8, Hygiene 8. The three fixes are the same: real demo video link, commit the room evidence into `evidence/`, fix the `git.pit.local` clone URL. Full report attached; scorecard updated.
+[01:07:15] fx-judge [bot]  #y9q1pbkoh3noj89q3xs3j41dqo:
+    Judge re-review — pit-crew-r2 @ 29b47c5 (unchanged) — BLOCKED
+    + file: report-clean-room-202611050106.md (3271 bytes)
+[01:10:17] user  #8d5wb4rhfirx5pkz1hhgxfo1go:
+    pit-post.ps1 called in-process (no agent addressed): "quotes", back\slash, é

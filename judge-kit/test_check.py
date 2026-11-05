@@ -50,6 +50,7 @@ FAKE_SECRETS = {
     "aws_access_key_id": "AK" + "IA" + "C" * 16,
     "google_api_key": "AI" + "za" + "d" * 35,
     "slack_token": "xo" + "xb-" + "1234567890-abcdef",
+    "slack_webhook_url": "https://hooks.slack" + ".com/services/" + "T0000/B0000/" + "z" * 24,
     "private_key": "-----BEGIN " + "OPENSSH PRIVATE KEY-----",
 }
 

@@ -1,0 +1,11 @@
+# approval_requests rows for the pit-builder agent (987281cc...), from Switch's Postgres, end of rehearsal.
+# answered_by 'user:<uuid>' = the gateway admin (owner) answering through the gateway API (Console's path);
+# '@switch-mattermost-...-user:localhost' = the owner pressing a button on the Mattermost card.
+           request_id           |  state   |          created_at           |          answered_at          |                              answered_by                               |       question        | chosen  | mattermost_cards 
+--------------------------------+----------+-------------------------------+-------------------------------+------------------------------------------------------------------------+-----------------------+---------+------------------
+ que_1a8f379c90014EX9vWV2Nm1aIz | answered | 2026-11-04 23:44:51.289235+00 | 2026-11-04 23:51:54.806754+00 | user:3495098f-d256-43e4-91a0-1ece24502b84                              | Push approval         | ["0:2"] |                0
+ que_1a90298d2001FOWSrbRP21S5GX | answered | 2026-11-05 00:01:22.162588+00 | 2026-11-05 00:01:44.915366+00 | @switch-mattermost-884bc225-406d-40bf-a347-01de01cc7e2b-user:localhost | Add dependency        | ["0:2"] |                1
+ que_1a907db30001Fl3dwYlDJx64RG | answered | 2026-11-05 00:07:07.035896+00 | 2026-11-05 00:07:14.195808+00 | @switch-mattermost-884bc225-406d-40bf-a347-01de01cc7e2b-user:localhost | Delete stale evidence | ["0:0"] |                1
+ que_1a90e352f001ITaZQBIqWl6mUD | answered | 2026-11-05 00:14:03.168086+00 | 2026-11-05 00:19:06.522075+00 | @switch-mattermost-884bc225-406d-40bf-a347-01de01cc7e2b-user:localhost | Land herald README    | ["0:1"] |                1
+(4 rows)
+

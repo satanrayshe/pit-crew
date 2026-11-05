@@ -4,8 +4,9 @@
 #
 #   scripts/install-commit-hook.sh <crew> [repository]
 #
-# It fires for every commit in that repository, the builder's included; the
-# builder sees the hook and leaves the notice to it.
+# It fires for every commit in that repository, the builder's included. The
+# builder still sends its own notice (the herald logs each hash once), because
+# a hook that cannot post only says so on stderr and the commit stands.
 set -euo pipefail
 
 if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
