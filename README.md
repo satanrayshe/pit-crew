@@ -143,9 +143,10 @@ python3 judge-kit/check.py path/to/clone --mode hygiene --changed-since FETCH_HE
 It checks the README for a "how Switch is used" section, reproduce steps, an
 architecture diagram and a demo video link; a license; that every
 `*.template.yaml` parses; secrets (Discord bot tokens and webhook URLs, GitHub,
-OpenAI, Anthropic, AWS and Google keys, Slack keys and webhook URLs, private
-keys, all redacted in the output); committed `.env`, `.switch/` or
-`.claude/settings.local.json` files; and files over 10 MB. Exit code 0 means every check passed. The tests
+OpenAI, Anthropic, AWS and Google keys, Slack keys and webhook URLs,
+Mattermost webhook URLs, private keys, all redacted in the output); committed
+`.env`, `.switch/` or `.claude/settings.local.json` files; and files over
+10 MB. Exit code 0 means every check passed. The tests
 need pytest, and PyYAML for the template-parsing ones:
 `uv run --with pytest --with pyyaml python -m pytest judge-kit`, or
 `python3 -m pytest judge-kit` where both are installed. More in
@@ -187,10 +188,10 @@ Each file in the evidence folder says where it came from.
   incoming webhook.
 - Webhook posts reach the room as an app (on Mattermost, as "user's
   webhook" when your account is `user`). They can address the scout, judge
-  and herald (open to anyone in the room), never the builder. Check it once by hand before relying on
-  the heartbeat. On Mattermost, create the webhook as yourself, never as the
-  account Switch's bridge signs in as: the bridge ignores that account's
-  posts ([docs/webhooks.md](docs/webhooks.md)).
+  and herald (open to anyone in the room), never the builder. Check it once
+  by hand before relying on the heartbeat. On Mattermost, create the webhook
+  as yourself, never as the account Switch's bridge signs in as: the bridge
+  ignores that account's posts ([docs/webhooks.md](docs/webhooks.md)).
 - Anyone in the room can wake the scout, judge and herald and answer their
   approval cards. None of them writes to your project, but all three run
   commands on your machine, and the judge runs a cloned repository's
@@ -218,6 +219,9 @@ Each file in the evidence folder says where it came from.
 - The kickoff wakes four agents at once. On OpenCode one of them can fail
   to start ("database is locked"); it says so in the room. Address it
   again.
+- OpenCode's free models stop at a usage limit. When ours ran out, the
+  agents went quiet with nothing in the room to say why; OpenCode's own log
+  said "Free usage limit reached".
 - The agents' pictures and the judge's kit (`kit_url`, under Advanced) come
   from github.com/satanrayshe/pit-crew, so that repository has to be public.
   In a fork, set `kit_url` to your fork. If the pictures cannot be fetched,

@@ -62,6 +62,7 @@ json_text() {
     END { printf "{\"text\": \"%s\"}", out }'
 }
 
+status=0
 if [ "$app" = discord ]; then
   reply="$(printf '%s' "$message" |
     curl --silent --show-error --fail-with-body --max-time 15 --form "content=<-" "$url")" || status=$?
@@ -70,7 +71,7 @@ else
     curl --silent --show-error --fail-with-body --max-time 15 \
       --header 'Content-Type: application/json' --data-binary @- "$url")" || status=$?
 fi
-if [ "${status:-0}" -ne 0 ]; then
+if [ "$status" -ne 0 ]; then
   echo "pit-post: the $app webhook refused the post: ${reply:-no answer}" >&2
   exit 1
 fi

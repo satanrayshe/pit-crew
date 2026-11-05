@@ -59,7 +59,9 @@ flowchart LR
 4. The judge clones the public repository into a fresh folder, runs
    `judge-kit/check.py` and the README's steps, and posts a verdict with the
    full report attached. It records the item and its answer in the mission
-   table of the `judge-scorecard` room document.
+   table of the `judge-scorecard` room document, which has one row per
+   checklist item on the scout's `pit-board` and no rows for the gate,
+   scores or verdict.
 5. Next time anyone addresses the scout (or the heartbeat does), it reads the
    scorecard and the build log, recomputes the countdown from the clock and
    updates the `pit-board` document, counting an item done only when its

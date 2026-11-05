@@ -38,6 +38,7 @@ SECRET_PATTERNS = {
     "google_api_key": re.compile(r"\bAIza[\w-]{35}\b"),
     "slack_token": re.compile(r"\bxox[abposr]-[A-Za-z0-9-]{10,}"),
     "slack_webhook_url": re.compile(r"https://hooks\.slack\.com/(?:services|workflows|triggers)/[\w/-]{20,}"),
+    "mattermost_webhook_url": re.compile(r"https?://[\w.-]+(?::\d+)?(?:/[\w.-]+)*/hooks/[a-z0-9]{26}\b"),
     "private_key": re.compile(r"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY(?: BLOCK)?-----"),
 }
 ENV_EXAMPLES = {".env.example", ".env.sample", ".env.template", ".env.dist"}

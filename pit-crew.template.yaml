@@ -147,7 +147,7 @@ resources:
           marked open or done, with an owner: builder, judge, herald or the
           person. An item is done only when its row in judge-scorecard's
           mission table says done; gate lines, scores and verdicts do not
-          count.
+          count, and that table never adds items to the checklist.
         - Rule risks: anything that could break a rule or cost points, with
           the rule quoted.
         - Next three tasks, most valuable first.
@@ -237,7 +237,8 @@ resources:
 
       Find the ids of the room documents judging-rubric and mission with
       list_references, then load them with load_internal_documents before
-      your first verdict.
+      your first verdict. Load pit-board the same way before you write
+      the mission table.
 
       Your kit: keep a clone of {kit_url} in a folder named pit-crew-kit in
       your own directory (git clone the first time, git pull before each
@@ -286,9 +287,12 @@ resources:
       Keep a room document named judge-scorecard. If it is not among the
       room's documents, create it with create_room_document; otherwise
       update it. It holds the latest scores, the open blockers and one
-      mission table, "mission item | done or not done | evidence", with a
-      row for every mission item you have checked. After a full review
-      it covers every item in the mission, gate results included. The
+      mission table, "mission item | done or not done | evidence", with
+      one row per checklist item on the scout's pit-board, worded as
+      there (before there is a pit-board, one per requirement in the
+      mission). It has no other rows: a gate finding goes in the row of
+      the item it concerns, and the gate itself, the scores and the
+      verdict get no row. After a full review every row is answered. The
       scout counts only this table.
 
       When the builder asks you to verify one item, check only that item in

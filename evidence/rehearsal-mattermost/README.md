@@ -114,7 +114,7 @@ The project was a fresh clone of a bare copy of the first run's remote
 | 13 | Owner presses Approve | pass | pass | Card reads "Approve, answered by @user from Mattermost"; `f11fa02..29b47c5 main -> main` 4 s later |
 | 14, 15 | Commit notices: hook and builder | partial | pass | `scripts/install-commit-hook.sh` installed in the project; the builder's commit fired it, and `pit-post.sh` posted "@fx-herald commit 29b47c5 docs: add changelog entry" through the owner's Mattermost webhook (01:01:28). The builder's own notice followed (01:01:36). `build-log` holds one line for 29b47c5 |
 | 17 | Judge full review | pass | pass | BLOCKED on the demo video, `check.py` 8/9, report attached. `judge-scorecard` now has one "Mission table", done or not done with evidence per row. The judge split the "no secrets, no .env, no .switch" line into three rows and added a row for its gate, so 12 rows |
-| 21 | Heartbeat | partial | pass | `scripts/pit-post.sh "@fx-scout pit check"` with `PIT_WEBHOOK_URL` set to the owner's webhook. The scout answered exactly "T-1h52m, 10/12 done": the ten rows the mission table marks done. The first run's scout counted gate lines |
+| 21 | Heartbeat | partial | partial | `scripts/pit-post.sh "@fx-scout pit check"` with `PIT_WEBHOOK_URL` set to the owner's webhook reached the scout, which answered exactly "T-1h52m, 10/12 done". The webhook part passes. The count does not: at kickoff the scout counted the mission's 9 items ("0/9 done"), but here it took the judge's 12 rows as its checklist, the gate row among them (`after-fixes/room-documents/pit-board.md`, item 12), although its instructions say gate lines do not count. The template had told the judge to put "gate results included" in the table. See [Review of the fixes](#review-of-the-fixes) |
 | new | Judge clears old clean-room folders | | pass | Three folders stamped 202611040101 to 0103 were planted beside the judge's first clone. On "review again" it deleted the two oldest, kept the two newest and cloned `clean-room-202611050106` (`after-fixes/git-state.txt`) |
 | new | `pit-post.sh` and `pit-post.ps1` on Mattermost | | pass | Quotes, backslash, tab, non-ASCII and two lines arrive as sent; a wrong hook id fails loud with Mattermost's error; `DISCORD_WEBHOOK_URL` still works; `pit-post.ps1` works from Windows PowerShell 5.1 (`after-fixes/scripts-check.txt`) |
 
@@ -137,3 +137,26 @@ not in the room (`logs/controller-excerpts.txt`).
 | `git-state.txt` | The judged remote and the project after the run, the installed hook, the judge's folders, and the model per turn |
 | `scripts-check.txt` | `pit-post.sh` and `pit-post.ps1` against the Mattermost webhook, with their output |
 | `validate-template.txt` | `scripts/validate-template.py` on the fixed template |
+
+## Review of the fixes
+
+A second pass over the fix commit, the same day, against the Switch source
+and the after-fix run, found three more things and changed them in the
+commit after it:
+
+- The judge's table and the scout's checklist still disagreed (row 21 above).
+  The judge now writes one row per checklist item on the scout's `pit-board`,
+  worded as there, and no row for the gate, the scores or the verdict; the
+  scout's instructions add that the table never adds items to the checklist.
+- `scripts/pit-post.sh` reported a failure after a successful post when the
+  calling shell had a variable named `status` in its environment
+  (`status=7 scripts/pit-post.sh "x"` posted the message, then printed "the
+  mattermost webhook refused the post: ok" and exited 1).
+- `judge-kit/check.py` reported Slack webhook URLs but not Mattermost ones,
+  which `pit-post.sh` now accepts.
+
+The template change was not run live. A re-run (crew `vx`, 01:27Z) got no
+answer from any agent: every OpenCode call failed with "Free usage limit
+reached. Free models work in OpenCode (https://opencode.ai); subscribe to
+OpenCode Go to keep going", and nothing in the room said so. We did not
+subscribe; the four `vx` agents are stopped.

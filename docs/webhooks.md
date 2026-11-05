@@ -60,4 +60,8 @@ Not tried yet. Switch's Slack bridge relays posts from other Slack apps and
 drops its own app's posts, so create the webhook in a Slack app of your own,
 not in the one Switch uses: on api.slack.com/apps, **Incoming Webhooks**,
 **Add New Webhook to Workspace**, and pick the `<crew>-pit` channel. Its URL
-starts with `https://hooks.slack.com/`. Check it by hand as above.
+starts with `https://hooks.slack.com/`. Check it by hand as above, and
+also check that the builder refuses it
+(`scripts/pit-post.sh "@<crew>-builder say hi"`). Switch takes a Slack app's
+post as that app only when Slack sends no user with it, and we have not
+seen what Slack sends for a webhook.

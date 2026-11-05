@@ -20,7 +20,7 @@ python3 judge-kit/check.py clean-room-202611051200
 | `readme_demo_video` | The README links a YouTube, Loom or Vimeo video and has no `TODO(video-link)` marker |
 | `license` | A LICENSE, LICENCE or COPYING file sits at the top |
 | `template` | At least one `*.template.yaml` exists and each one parses as a Switch template |
-| `secrets` | No Discord bot token or webhook URL, GitHub, OpenAI, Anthropic, AWS or Google key, Slack key or webhook URL, or private key appears in any text file |
+| `secrets` | No Discord bot token or webhook URL, GitHub, OpenAI, Anthropic, AWS or Google key, Slack key or webhook URL, Mattermost webhook URL, or private key appears in any text file |
 | `local_files` | No `.env`, nothing under `.switch/`, no `.claude/settings.local.json` is committed |
 | `large_files` | No file is over 10 MB (`--max-file-mb` changes it) |
 
