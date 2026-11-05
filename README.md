@@ -179,7 +179,7 @@ file is.
 ## How this was built
 
 The heavy coding, for our Switch pull requests and for much of this
-repository, happens in direct Claude Code sessions, not through the builder.
+repository, happens outside the crew, not through the builder.
 Pit Crew's part is the work around it: the checklist and countdown, a
 clean-clone judgment of each push, the build log and the doc drafts.
 Each file in the evidence folder says where it came from.

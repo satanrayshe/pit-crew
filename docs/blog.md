@@ -51,8 +51,8 @@ source code. Where output and screenshots from my Discord run will go, the
 post says TODO(discord-run) or TODO(screenshot).
 
 Most of the code in the Pit Crew repository and in my pull requests to
-Switch was written in Claude Code sessions outside the crew. The crew does
-the work around the code.
+Switch was written outside the crew. The crew does the work around the
+code.
 
 ## A few words first
 
