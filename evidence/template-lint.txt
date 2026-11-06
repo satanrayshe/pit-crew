@@ -1,6 +1,6 @@
 # scripts/validate-template.py pit-crew.template.yaml
-# Switch checkout: sandbox-quantum/switch main @ eba577ee7 (2026-11-04)
-# Run: 2026-11-05T01:12Z with: uv run --project <switch>/core python scripts/validate-template.py pit-crew.template.yaml
+# Switch checkout: sandbox-quantum/switch main @ fb5780cf6 (2026-11-05), plus the Mistral Vibe provider branch (#1513), which does not touch templates
+# Run: 2026-11-06T17:40Z with: uv run --project <switch>/core python scripts/validate-template.py pit-crew.template.yaml
 
 == Lint: 0 error(s), 0 warning(s)
 
